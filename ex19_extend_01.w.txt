@@ -1,0 +1,9 @@
+let array = [10, 20, 30, 40];
+
+function setup() {
+  result = array.reduce((acc, cur, index, array) => {		// 콜백함수(화살표함수 표현)
+    print(acc, cur, index, array);
+    return acc + cur;
+  }, 0);
+  print(result);
+}

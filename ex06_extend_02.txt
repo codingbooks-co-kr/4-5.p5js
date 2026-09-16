@@ -1,0 +1,15 @@
+function setup() {
+  background(0);
+  fill(255);
+  textAlign(CENTER);
+  
+  let name = 10;	// 숫자일 때
+  switch(name) {
+  case '10':
+    text('문자열', 50, 50);
+    break;
+  case 10:
+    text('숫자', 50, 50);
+    break;
+  }
+}

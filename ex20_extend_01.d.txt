@@ -1,0 +1,14 @@
+// 콜백함수에 의한 동기적 처리3
+
+function setup() {
+  // 화살표함수를 직접 전달
+  begin(() => print('One'));
+
+  print('Two');
+  print('Three');
+}
+
+function begin(startFirst) {
+  print('시작합니다!');
+  startFirst();
+}

@@ -1,0 +1,18 @@
+// 영문자키로 다양한 각도의 원호 그리기
+
+let degree = 90;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  if (keyIsPressed) {
+    if (key >= 'a' && key <= 'z') {
+      let index = key.charCodeAt(0) - 'a'.charCodeAt(0);
+      degree = map(index, 0, 25, 0, 360);
+    }
+  }
+  arc(width / 2, height / 2, 200, 200, 0, radians(degree));
+}

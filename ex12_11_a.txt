@@ -1,0 +1,23 @@
+// [질문10.7]의 기본 예제
+
+let num = 50; 
+let x = [], y = [];
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < num-1; i++) {
+    x[i] = x[i+1];
+    y[i] = y[i+1];
+  }
+  x[num-1] = mouseX;
+  y[num-1] = mouseY;
+  for (let i = 0; i < num; i++) {
+    fill(255, 255, 0);
+    textSize(20);
+    text(i, x[i], y[i]);
+  }
+}

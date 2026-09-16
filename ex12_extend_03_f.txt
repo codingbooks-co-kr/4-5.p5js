@@ -1,0 +1,12 @@
+// const를 사용한 상수 선언과 값 변경
+
+function setup() {
+  const num = 255;
+  //num = 0;		// 값 변경 불가
+
+  const array = [255, 0, 0];
+  //array =  [0, 0, 0];		// 값 변경 불가
+
+  array[0] = 0;		// 값 변경 가능
+  print(num, array);
+}

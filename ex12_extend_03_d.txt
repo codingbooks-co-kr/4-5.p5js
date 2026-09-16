@@ -1,0 +1,14 @@
+// 왼쪽과 같은 의미의 코드
+
+function setup() {
+  let num = 255;
+  let array = [255, 0, 0];
+  print(num, array[0]);
+
+  let value = num;
+  let reference = array;
+
+  value = 0;
+  reference[0] = 0;
+  print(num, array[0]);
+}

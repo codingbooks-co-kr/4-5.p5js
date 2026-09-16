@@ -1,0 +1,18 @@
+// 원의 마찰 이동 (p5.Vector 클래스 사용)
+
+let position;
+let velocity;
+let friction = 0.98;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  position = createVector(0, 0);
+  velocity = createVector(10, 10);
+}
+
+function draw() {
+  ellipse(position.x, position.y, 30, 30);
+  velocity.mult(friction);
+  position.add(velocity);
+}

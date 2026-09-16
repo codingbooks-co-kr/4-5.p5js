@@ -1,0 +1,68 @@
+// 본문 코드: 다섯 개의 원 객체가 랜덤 이동, 마우스를 누른 위치로 0번 요소 이동
+
+let c = [];
+
+function setup() {
+  createCanvas(500, 500); 
+  for (let i = 0; i < 5; i++) {
+    c[i] = new Circle(width/2, height/2);
+  }
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < c.length; i++) {
+    c[i].display();
+    c[i].move();
+    c[i].bounce();
+  }
+}
+
+function mousePressed() {
+  c[0].position.x = mouseX;
+  c[0].position.y = mouseY;
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-5, 5), random(-5, 5));
+    this.col = color(255);
+    this.d = 30;
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.position.add(this.velocity);
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+let x = 0.0;
+
+function setup() {
+  createCanvas(500, 300);
+  background(0);
+}
+
+function draw() {
+  x = lerp(x, mouseX, 0.05);
+  ellipse(x, height/2, 30, 30);
+}

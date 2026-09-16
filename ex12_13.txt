@@ -1,0 +1,31 @@
+// 원 10개를 랜덤 생성하여 오른쪽으로 이동하고 이 중 특정 원을 추적
+
+let num = 10;
+let x = [], y = [];
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < num; i++) { 
+    x[i] = random(-300, 0);
+    y[i] = random(0, height);
+  }
+}
+
+function draw() {
+  background(0);
+  let xPos = move(5);
+  print(xPos);
+}
+
+function move(pos) {
+  for (let i = 0; i < num; i++) {
+    if (i === pos) {
+      fill(255, 0, 0);
+    } else {
+      fill(255);
+    }
+    ellipse(x[i], y[i], 30, 30);
+    x[i]++;
+  }
+  return x[pos];
+}

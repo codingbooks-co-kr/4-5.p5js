@@ -1,0 +1,21 @@
+// 두 원이 충돌하면 원의 색상이 랜덤하게 변경
+
+let x, y, d, r = 50.0, tx = 0.0, ty = 0.5;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  x = noise(tx) * width;
+  y = noise(ty) * height;
+  d = dist(width/2, height/2, x, y);
+  if (d < r) {
+    fill(random(255), random(255), random(255), 200);
+  }
+  ellipse(x, y, r, r);
+  ellipse(width/2, height/2, r, r); 
+  tx += 0.01;
+  ty += 0.01;
+}

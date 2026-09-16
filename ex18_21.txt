@@ -1,0 +1,83 @@
+// 본문 코드: 가속력, 중력, 마찰력 및 인력을 받는 원
+
+let c;
+
+function setup() {
+  createCanvas(500, 500);
+  c = new Circle();
+  c.firstForce();
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  c.display();
+  c.move();
+  c.bounce();
+  if (mouseIsPressed) {
+    c.addForce();
+  }
+}
+
+// Circle 클래스
+
+class Circle {
+  constructor() {
+    this.position = createVector(width/2, 50);
+    this.velocity = createVector(0, 0);
+    this.accel = createVector(0, 0);
+    this.gravity = createVector(0.0, 0.1);
+    this.d = 30;
+    this.friction = 0.99;
+    this.col = color(255);
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.accel.add(this.gravity);
+    this.velocity.mult(this.friction);
+    this.velocity.add(this.accel);
+    this.position.add(this.velocity);
+    this.accel.mult(0);
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+
+  firstForce() {
+    let force = createVector(random(-5, 5), random(-5, 5));
+    this.accel.add(force);
+  }
+
+  addForce() {
+    let mouse = createVector(mouseX, mouseY);
+    let force = p5.Vector.sub(mouse, this.position);
+    force.normalize();
+    force.mult(0.3);
+    this.accel.add(force);
+  }
+}

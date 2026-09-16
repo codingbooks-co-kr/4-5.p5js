@@ -1,0 +1,10 @@
+// 객체 생성없이 다섯 개의 변수만으로 구성
+
+function setup() {
+  let c = 255;		// 원의 색상
+  let x = 50;		// 원의 중심좌표 중 x좌표
+  let y = 50;		// 원의 중심좌표 중 y좌표
+  let d = 30;		// 원의 크기
+  let velocity = 1;		// 원의 속도
+  print(c, x, y, d, velocity);	// 원의 속성 출력
+}

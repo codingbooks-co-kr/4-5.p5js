@@ -1,0 +1,19 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+
+  // ❶ 콜백함수의 인수는 (요소, [인덱스], [배열])
+  let result = array.map(function (value, index, array) {
+    return value * 2;
+  });
+  print(result);
+
+  // ❷ 콜백함수의 인수 중 (인덱스, 배열)은 생략 가능
+  result = array.map(function (value) {
+    return value * 2;
+  });
+  print(result);
+
+  // ❸ 콜백함수를 화살표함수로 변경
+  result = array.map(value =>  value * 2);
+  print(result);
+}

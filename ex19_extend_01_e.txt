@@ -1,0 +1,13 @@
+let position = new Array(10);			// ❷ Array() 생성자 함수 사용 방식
+function setup() {
+  createCanvas(300, 300);
+  for (let i = 0; i < position.length; i++) {		// length 사용 가능
+    position[i] = createVector(random(width), random(height));
+  }
+}
+function draw() {
+  background(0);
+  for (let i = 0; i < position.length; i++) {		// length 사용 가능
+    ellipse(position[i].x, position[i].y, 30, 30);
+  }
+}

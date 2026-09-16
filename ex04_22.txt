@@ -1,0 +1,15 @@
+// 마우스의 움직임에 따라 크기와 위치가 변하는 원과 사각형
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(0); 
+  fill(255, 0, 0);
+  ellipse(mouseX, height/2, mouseY, mouseY);
+  let inverseY = map(mouseY, 0, height, height, 0);
+  fill(0, 255, 0, 100);
+  rectMode(CENTER);
+  rect(mouseX, height/2, inverseY, inverseY);
+}

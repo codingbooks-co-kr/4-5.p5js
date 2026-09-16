@@ -1,0 +1,8 @@
+// 정적 방식
+
+function setup() {
+  createCanvas(300, 300);
+  print('Hello, p5.js!');
+}
+
+function draw() { } 

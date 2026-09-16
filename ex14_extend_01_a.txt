@@ -1,0 +1,41 @@
+// ❶ 다섯 개의 원 좌우 반사 (클래스 미사용)
+
+let num = 5;
+let col = [];
+let x = [];
+let y = [];
+let d = [];
+let velocity = [];
+
+function setup() {
+  createCanvas(500, 500);
+
+  // 각 원의 속성별 초기화
+  for (let i = 0; i < num; i++) { 
+    col[i] = color(random(255), random(255), random(255));
+    x[i] = random(width);
+    y[i] = random(height);
+    d[i] = random(20, 60);
+    velocity[i] = random(-3, 3);
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < num; i++) { 
+    display(i);
+    move(i);
+  }
+}
+
+function display(i) {
+  fill(col[i]);
+  ellipse(x[i], y[i], d[i], d[i]);
+}
+
+function move(i) {
+  x[i] += velocity[i];
+  if (x[i] < 0 || x[i] > width) {
+    velocity[i] *= -1;
+  }
+}

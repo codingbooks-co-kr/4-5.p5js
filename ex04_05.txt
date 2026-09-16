@@ -1,0 +1,17 @@
+// radians() 함수를 사용한 원의 상하 진동
+
+let degree = 0.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  let theta = radians(degree);
+  let y = height/2 + height/2 * sin(theta);
+  stroke(255);
+  line(width/2, 0, width/2, y);
+  ellipse(width/2, y, 30, 30);
+  degree += 6;
+}

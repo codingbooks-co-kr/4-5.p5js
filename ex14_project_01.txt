@@ -1,0 +1,49 @@
+// 본문 코드: 세 개의 사각형 객체 중 하나를 마우스로 선택하면 원의 크기가 변경
+
+let s = [];
+let size = 100;
+
+function setup() { 
+  createCanvas(500, 500);
+  for (let i = 0; i < 3; i++) { 
+    s[i] = new Square(110*(i+1), 100, 50);
+  }
+} 
+
+function draw() { 
+  background(0);
+  fill(0, 0, 255);
+  ellipse(width/2, height/2, size, size);
+
+  for (let i = 0; i < s.length; i++) { 
+    if (s[i].check(mouseX, mouseY)) {
+      fill(255, 0, 0);
+      size = 200 * (i + 1);
+    } else {
+      fill(255, 255, 0);
+    }
+    s[i].display();
+  }
+}
+
+// Square 클래스 코드
+
+class Square {
+  constructor(x, y, d) {
+    this.x = x;
+    this.y = y;
+    this.d = d;
+  }
+
+  display() {
+    rect(this.x, this.y, this.d, this.d);
+  }
+
+  check(x, y) {
+    if ((x > this.x) && (x < this.x+this.d) && (y > this.y) && (y < this.y+this.d)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

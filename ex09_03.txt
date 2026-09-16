@@ -1,0 +1,18 @@
+// 세 개의 문자를 오른쪽으로 이동
+
+let x = 0;
+let c = ['a', 'b', 'c'];
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  textSize(50);
+  text(c[0], x, 80);
+  text(c[1], x, 160);
+  text(c[2], x, 240);
+  x++;
+}

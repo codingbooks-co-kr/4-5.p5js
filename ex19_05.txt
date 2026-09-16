@@ -1,0 +1,70 @@
+// 본문 코드: 마우스를 누르면 원이 생성되어 랜덤 이동, 5개를 초과하면 0번 객체 소멸
+
+let circles = [];
+
+function setup() {
+  createCanvas(500, 500); 
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < circles.length; i++) {
+    let c = circles[i];
+    c.display();
+    c.move();
+    c.bounce();
+  }
+  if (circles.length > 5) {
+    circles.splice(0, 1);
+  }
+  print(circles.length);
+}
+
+function mousePressed() {
+  let c = new Circle(mouseX, mouseY);
+  circles.push(c);
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-5, 5), random(-5, 5));
+    this.col = color(255);
+    this.d = 30;
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.position.add(this.velocity);
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+}

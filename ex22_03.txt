@@ -1,0 +1,31 @@
+// 토글 버튼을 누를 때마다 원의 색상이 교대로 변경
+
+let c, button;
+let flag = false;
+
+function setup() {
+  createCanvas(500, 500);
+  button = createButton("Click!");
+  button.position(10, 10);
+  button.size(90, 50);
+  button.mousePressed(colorChange);
+  c = color(100);
+}
+
+function draw() {
+  background(200);
+  fill(c);
+  ellipse(width/2, height/2, 300, 300);
+}
+
+function colorChange() {
+  if (flag) {
+    c = color(255, 0, 0);
+    button.html("Click!");
+    flag = false;
+  } else {
+    c = color(0, 255, 0);
+    button.html("Click Again!");
+    flag = true;
+  }
+}

@@ -1,0 +1,25 @@
+function setup() {
+  print(2 / 3);		// 정수 / 정수 = 실수
+  print(2 / 3.0);	// 정수 / 실수 = 실수
+  print(2.0 / 3.0);	// 실수 / 실수 = 실수
+
+  print("10" + 2);	// "102", 문자열+숫자 → 문자열 연결
+  print("" + 2 + 3);	// "23", 빈문자열+숫자 → 문자열 연결
+  print(2 + 3 + "");	// "5", 뎃셈 + 문자열 → 문자열 연결
+  print("10" - 2);	// 8, 산술 연산
+  print("10" * 2);	// 20, 산술 연산
+  print("10" / 2);	// 5, 산술 연산
+
+  print(true + 2);	// 1+2=3 (true = 1)
+  print(true - 2);	// 1-2=-1,
+  print(true * 2);	// 1*2=2,
+  print(true / 2);	// 1/2=0.5
+
+  print(false + 2);	// 0+2=2 (false = 0)
+  print(false - 2);	// 0-2=-2
+  print(false * 2);	// 0*2=0
+  print(false / 2);	// 0/2=0
+
+  print(null + 2);	// 0+2=2
+  print(undefined + 2);	// NaN
+}

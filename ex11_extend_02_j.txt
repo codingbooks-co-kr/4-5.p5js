@@ -1,0 +1,32 @@
+// 매개변수가 있는 콜백함수
+
+let r = 100.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  // ❶distance는 콜백함수
+  show(width/2, height/2, distance);
+}
+
+// ❷매개변수 d는 콜백함수를 전달받음
+function show(x, y, d) {
+  fill(255);
+  textSize(20);
+  text("콜백함수", 10, 30);
+
+  // ❸콜백함수 호출
+  let dd = d(x, y);
+  print(dd);
+}
+
+// 콜백함수로 익명함수(유형4)를 사용
+let distance = function (x, y) {
+  let d = dist(x, y, mouseX, mouseY);
+  fill(d, d, 255);
+  ellipse(x, y, r*2, r*2);
+  return d;
+};

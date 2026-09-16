@@ -1,0 +1,91 @@
+// 원과 사각형 객체 배열 좌우 반사 3 (다형성을 배열에 적용)
+// 본문 코드
+
+let sh = [];	
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < 12; i++) {
+    let r = random(1);
+    if (r < 0.5) { 
+      sh[i] = new Circle(255, random(width), random(height), random(20, 50), random(-5, 5), "Circle"); 		// 하위 객체: Circle
+    } else {
+      sh[i] = new Square(255, random(width), random(height), random(20, 50), random(-5, 5), "Square");		// 하위 객체: Square
+    }
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < sh.length; i++) {
+    sh[i].display();
+    sh[i].move();
+
+    // 해당 객체별 메소드 호출
+    if (sh[i] instanceof Circle) {
+      sh[i].circumference();
+    } else if (sh[i] instanceof Square) {
+      sh[i].area();
+    }
+  }
+}
+
+// 클래스 코드 
+
+class Shape {
+  constructor(c, x, y, d, velocity, str) {
+    this.c = c;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity = velocity;
+  this.str = str;
+  }
+
+  display() {
+    fill(this.c, this.c, 0);
+    textSize(20);
+    text(this.str, this.x+20, this.y);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}
+
+class Circle extends Shape {
+  constructor(c, x, y, d, velocity, str) {	
+    super(c, x, y, d, velocity, str);
+  }
+
+  display() {
+    fill(this.c, 0, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+
+  circumference() {
+    textSize(20);
+    let s = this.str + " " + int(2 * PI * this.d/2.0);
+    text(s, this.x+20, this.y);
+  }
+}
+
+class Square extends Shape {
+  constructor(c, x, y, d, velocity, str) {	
+    super(c, x, y, d, velocity, str);
+  }
+
+  display() {
+    fill(0, this.c, 0);
+    rect(this.x, this.y, this.d, this.d);
+  }
+
+  area() {
+    textSize(20);
+    let s = this.str + " " + int(this.d * this.d);
+    text(s, this.x+20, this.y);
+  }
+}

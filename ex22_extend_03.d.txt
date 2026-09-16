@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/...(생략).../p5.sound.min.js"></script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #00ff00;
+        color: #ff0000;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!-- html 소스 코드 추가 -->
+    <h1>랜덤하게 원을 생성</h1>
+    <h3>Coding Artist</h3>
+    <p><a href="https://p5js.org/reference/">p5.js 레퍼런스</a></p>
+    <script>
+      function setup() {
+        createCanvas(300, 300);
+        background(0);
+      }
+      function draw() {
+        fill(random(255), random(255), random(255), 200);
+        ellipse(random(width), random(height), 30, 30);
+      }
+    </script>
+  </body>
+</html>

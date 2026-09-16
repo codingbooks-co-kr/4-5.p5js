@@ -1,0 +1,46 @@
+// ❷ 다섯 개의 원 객체 좌우 반사 (클래스에 기반한 객체 배열을 사용) 
+
+let c = [];
+
+function setup() {
+  createCanvas(500, 500);
+
+  // 각 원의 객체별 초기화
+  for (let i = 0; i < 5; i++) { 
+    let col = color(random(255), random(255), random(255));
+    c[i] = new Circle(col, random(width), random(height), random(20, 60), random(-3, 3));
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < c.length; i++) { 
+    c[i].display();
+    c[i].move();
+  }
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  // 생성자: 속성(=원의 속성: 색상, 위치좌표, 크기, 속도) 초기화
+  constructor(col, x, y, d, velocity) {
+    this.col = col;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity = velocity;
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}

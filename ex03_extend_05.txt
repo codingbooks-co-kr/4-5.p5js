@@ -1,0 +1,16 @@
+function setup() {
+  createCanvas(300, 100);
+  background(200);
+  let c1 = 'A'; 
+  let c2 = '\u0041'; 
+  let c3 = char(65);
+  let c4 = char(0b01000001);
+  let c5 = char(0x41);
+
+  textSize(50);
+  text(c1, 50, 50);
+  text(c2, 100, 50);
+  text(c3, 150, 50);
+  text(c4, 200, 50);
+  text(c5, 250, 50);
+}

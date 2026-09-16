@@ -1,0 +1,15 @@
+function setup() {
+  background(200);
+  display("p5.js");
+}
+
+function display(arg) {
+  if (typeof arg === "number") {
+    fill(255, 255, 0);
+    ellipse(50, 50, arg, arg);
+  } else if (typeof arg === "string") {
+    fill(0);
+    textAlign(CENTER);
+    text(arg, 50, 50);
+  }
+}

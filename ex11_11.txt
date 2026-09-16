@@ -1,0 +1,24 @@
+// 마우스의 위치가 사각형 내부인지 외부인지에 따라 배경색 변경
+
+let x = 100, y = 50, w = 100, h = 200;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  if (check()) {
+    background(255, 0, 0);
+  } else {
+    background(0);
+  }
+  rect(x, y, w, h);
+}
+
+function check() {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    return true;
+  } else {
+    return false;
+  }
+}

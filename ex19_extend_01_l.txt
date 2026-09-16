@@ -1,0 +1,15 @@
+function setup() {
+  let array = [10, 20, 30, 30, 40];
+
+  let index = array.indexOf(100);	// 100의 인덱스 반환
+  print(index);			// 없으면 –1
+
+  index = array.indexOf(30);		// 30의 첫 인덱스 반환
+  print(index);			// 2
+
+  index = array.lastIndexOf(30);	// 30의 마지막 인덱스 반환
+  print(index);			// 3
+
+  array.splice(index, 1, 100); 		// 30 대신 100으로 대체
+  for (let i = 0; i < array.length; i++) print(array[i]);
+}

@@ -1,0 +1,12 @@
+// 데이터형이 서로 다른 배열 요소를 가짐
+
+let array = [];
+
+function setup() {
+  array[0] = 10;	// 숫자형
+  array[1] = "p5.js";	// 문자열형
+  array[2] = true;	// 논리형
+  array[3] = [1, 2, 3];	// 객체형(배열)
+  print(array);
+  print(array.length);
+}

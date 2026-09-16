@@ -1,0 +1,15 @@
+// prompt(), confirm(), alert(), open() 함수를 모두 사용한 예
+
+function setup() {
+  background(0);
+}
+
+function mousePressed() {
+  let name = prompt("이름을 입력하세요");
+  let move = confirm(name + ", P5.js 홈페이지로 이동할까요?");
+  if (move) {
+    window.open("http://p5js.org/", "P5.js", "width=1000px, height=700px");
+  } else {
+    alert(name + ", 또 만나요.");
+  }
+}

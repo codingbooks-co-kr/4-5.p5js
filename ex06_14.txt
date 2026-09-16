@@ -1,0 +1,28 @@
+// switch문을 사용하여 방향키로 원 이동
+
+let x = 150, y = 150;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  if (keyIsPressed) {
+    switch(keyCode) {
+    case LEFT_ARROW:
+      x--;
+      break;
+    case RIGHT_ARROW:
+      x++;
+      break;
+    case UP_ARROW:
+      y--;
+      break;
+    case DOWN_ARROW:
+      y++;
+      break;
+    }
+  }
+  ellipse(x, y, 100, 100);
+}

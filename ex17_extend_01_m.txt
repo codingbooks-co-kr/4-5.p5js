@@ -1,0 +1,8 @@
+function setup() {
+  let str = " Hello p5.js! ";
+  print(str);
+  print(str.length);		// 공백문자를 포함한 문자열 길이
+  
+  print(str.trim());
+  print(str.trim().length);	// 공백문자를 제거 후 문자열 길이
+}

@@ -1,0 +1,20 @@
+// 배열과 반복문을 사용하여 다섯 개의 원을 대각선 이동
+
+let x = [], y = [];
+
+function setup() {
+  createCanvas(300, 300);
+  for (let i = 0; i < 5; i++) {
+    x[i] = i * width / 5;
+    y[i] = i * height / 5;
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < 5; i++) {
+    ellipse(x[i], y[i], 30, 30);
+    x[i]++;
+    y[i]++;
+  }
+}

@@ -1,0 +1,18 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+  let result = array.fill(0); 	// 배열 요소를 0으로 채우기
+  print(array);		// 원본 배열도 변경됨
+  print(result);		// 반환 배열
+
+  array = [10, 20, 30, 40];
+  result = array.fill(0, 1); 	// 인덱스1부터 0으로 채우기
+  print(result);
+  
+  array = [10, 20, 30, 40];
+  result = array.fill(0, 1, 3); 	// array[1]∼array[2]을 0으로
+  print(result);
+  
+  array = new Array(4);	// 크기가 4인 배열 생성
+  result = array.fill(0); 	// 배열 요소를 0으로 채우기
+  print(result);
+}

@@ -1,0 +1,50 @@
+// 본문 코드: 원 객체 두 개가 좌우 반사하면서 상호 부딪힐 때 크기가 랜덤하게 변경
+
+let c1, c2;
+
+function setup() {
+  createCanvas(300, 300);
+  c1 = new Circle(255, 0, width/2, 30, 1);
+  c2 = new Circle(255, width, width/2, 30, 1);
+}
+
+function draw() {
+  background(0);
+  c1.display();
+  c1.move();
+  c1.hit(c2);
+  c2.display();
+  c2.move();
+  c2.hit(c1);
+}
+
+// 클래스 코드 
+
+class Circle {
+  constructor(col, x, y, d, velocity) {
+    this.col = col;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity = velocity;
+  }
+
+  display() {
+    fill(this.col, 255, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+
+  hit(c) {
+    let distance = dist(this.x, this.y, c.x, c.y);
+    if (distance < (this.d/2 + c.d/2)) {
+      this.d = random(30, 60);
+    }
+  }
+}

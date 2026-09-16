@@ -1,0 +1,32 @@
+// "processing"을 입력할 때만 입력 문자열이 랜덤하게 떨림
+
+let str = "";
+let x = 250, y = 250;
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  textSize(50);
+  textAlign(CENTER);
+  text("Type p5.js", width/2, 50);
+
+  if (str === "p5.js") {
+    x += random(-2, 2);
+    y += random(-2, 2);
+    text(str, x, y);
+  } else {
+    text(str, width/2, height/2);
+  }
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    str = "";
+  } else {
+    str += key;
+  }
+}

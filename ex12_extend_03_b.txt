@@ -1,0 +1,13 @@
+// 참조에 의한 호출(Call by Reference)
+
+let c = [255, 0, 0];
+
+function setup() {
+  let reference = display(c);
+  print(reference, typeof reference);
+}
+
+function display(col) {
+  background(col[0], col[1], col[2]);
+  return col;
+}

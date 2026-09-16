@@ -1,0 +1,20 @@
+// 화면 전체에 작은 이미지 객체를 반복 출력
+
+let img;
+
+function preload() {
+  img = loadImage("flower.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  for (let y = 0; y < height; y += 100) {
+    for (let x = 0; x < width; x += 100) {
+      image(img, x, y, 90, 90);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+// 가속도와 마찰율을 이용하여 낙하하고 반사 및 감쇄하는 원
+
+let x = 150.0, y = 0.0;
+let velocity = 0.0;
+let accel = 0.3;
+let friction = 0.95; 
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  ellipse(x, y, 30, 30);
+  velocity += accel;
+  y += velocity;
+  if (y > height) {
+    y = height;
+    velocity *= -1;
+    velocity *= friction;
+  }
+}

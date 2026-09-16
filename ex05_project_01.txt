@@ -1,0 +1,18 @@
+let x = 0.0, degree = 0.0, velocity = 1.0; 
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  arc(x, height/2, 150, 150, radians(degree), radians(360-degree));
+  x += velocity;
+  degree++;
+  if (x < 0 || x > width) {
+    velocity *= -1;
+  }
+  if (degree >= 40) {
+    degree = 0;
+  }
+}

@@ -1,0 +1,21 @@
+// 이미지 객체를 생성 후 회전 운동
+
+let img;
+let theta = 0;
+
+function preload() {
+  img = loadImage("flower.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  let x = width/2 + 100 * cos(theta);
+  let y = height/2 + 100 * sin(theta);
+  imageMode(CENTER);
+  image(img, x, y);
+  theta += 0.01;
+}

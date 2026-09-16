@@ -1,0 +1,7 @@
+// 연산 우선순위의 예2
+
+function setup() {
+  let x;
+  x = 2 * 3 - (4 + 5) / 6 % 7;
+  print(x);
+}

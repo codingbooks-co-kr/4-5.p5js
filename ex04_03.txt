@@ -1,0 +1,18 @@
+// 원의 마찰 이동
+
+let x = 0, y = 0;
+let velocity_x = 10, velocity_y = 10;
+let friction = 0.97;
+
+function setup() {
+  createCanvas(400, 400);
+  background(0);
+}
+
+function draw() {
+  ellipse(x, y, 30, 30);
+  velocity_x *= friction;
+  velocity_y *= friction;
+  x += velocity_x;
+  y += velocity_y;
+}

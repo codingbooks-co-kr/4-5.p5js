@@ -1,0 +1,54 @@
+// “객체 리터럴” 기반 객체 생성 (원 객체 두 개 좌우 반사)
+
+let circle1, circle2;
+
+function setup() {
+  createCanvas(300, 300);
+  circle1 = {		// 객체 리터럴
+    c: 255,			// 속성은 키:값으로 구성
+    x: 150,
+    y: 100,
+    d: 30,
+    velocity: 1,
+
+    display() {		// 메소드는 클래스에서의 표현법으로 수정 가능(아래 동일)
+      fill(this.c, 255, 0);
+      ellipse(this.x, this.y, this.d, this.d);
+    },
+
+    move() {		// 메소드
+      this.x += this.velocity;
+      if (this.x < 0 || this.x > width) {
+        this.velocity *= -1;
+      }
+    }
+  };
+  
+  circle2 = {		// 객체 리터럴
+    c: 255,			// 속성은 키:값으로 구성
+    x: 150,
+    y: 200,
+    d: 60,
+    velocity: -1,
+
+    display() {		// 메소드
+      fill(this.c, 255, 0);
+      ellipse(this.x, this.y, this.d, this.d);
+    },
+
+    move() {		// 메소드
+      this.x += this.velocity;
+      if (this.x < 0 || this.x > width) {
+        this.velocity *= -1;
+      }
+    }
+  };
+}
+
+function draw() {
+  background(0);
+  circle1.display(); 		// 메소드 호출
+  circle1.move(); 		// 메소드 호출
+  circle2.display(); 		// 메소드 호출
+  circle2.move(); 		// 메소드 호출
+}

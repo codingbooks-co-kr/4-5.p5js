@@ -1,0 +1,22 @@
+// 원 세 개의 상하 진동
+
+let theta = 0.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  let y1 = height/2 + height/2 * sin(theta);
+  let y2 = height/2 + height/2 * sin(theta + PI/4);
+  let y3 = height/2 + height/2 * sin(theta + PI/2);
+  stroke(255);
+  line(50, 0, 50, y1);
+  line(150, 0, 150, y2);
+  line(250, 0, 250, y3);
+  ellipse(50, y1, 30, 30);
+  ellipse(150, y2, 30, 30);
+  ellipse(250, y3, 30, 30);
+  theta += 0.1;
+}

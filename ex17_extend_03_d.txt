@@ -1,0 +1,15 @@
+// “객체 리터럴” 기반 객체 생성
+
+function setup() {
+  let circle = {
+    c: 255,
+    x: 50,
+    y: 50,
+    d: 30,
+    velocity: 1,
+  };
+
+  print(circle.c, circle.x, circle.y, circle.d, circle.velocity);		// 점표기
+  print(circle['c'], circle['x'], circle['y'], circle['d'], circle['velocity']);	// 대괄호표기
+  print(typeof circle);
+}

@@ -1,0 +1,51 @@
+// 본문 코드: 자연 이미지를 배경으로 마우스를 누르면 나비가 하나씩 생성되어 랜덤 이동2
+
+let img, bg_img;
+let butterflies = [];
+
+function preload() {
+  img = loadImage("butterfly.png");
+  bg_img = loadImage("nature3.jpg");
+}
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(bg_img);
+  for (let i = 0; i < butterflies.length; i++) {
+    let b = butterflies[i];
+    b.display();
+    b.move();
+  }
+  if (butterflies.length > 5) {
+    butterflies.splice(0, 1);
+  }
+}
+
+function mousePressed() {
+  let b = new Butterfly(mouseX, mouseY)
+  butterflies.push(b);
+}
+
+// Butterfly 클래스 코드
+
+class Butterfly {
+  constructor() {
+    this.position = createVector(0.0, 0.0);
+    this.t = createVector(0.0, 0.5);
+    this.d = 50;
+  }
+
+  display() {
+    image(img, this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.position.x = noise(this.t.x) * width;
+    this.position.y = noise(this.t.y) * height;
+    this.t.x += 0.01;
+    this.t.y += 0.01;
+  }
+}

@@ -1,0 +1,60 @@
+// 본문 코드: 마우스가 원 객체 안에 들어가면 링이 생성되어 점점 커짐
+
+let c;
+
+function setup() {
+  createCanvas(500, 500);
+  c = new Circle();
+}
+
+function draw() {
+  background(0);
+  c.display();
+  c.move();
+  c.check(mouseX, mouseY);
+}
+
+// 클래스 코드
+
+class Circle {
+  constructor() {
+    this.on = false;
+    this.c = color(255, 255, 0);
+    this.x = width/2;
+    this.y = height/2;
+    this.d = 100;
+    this.dd = 1;
+  }
+
+  display() {
+    fill(this.c);
+    ellipse(this.x, this.y, this.d, this.d);
+    if (this.on) {
+      noFill();
+      stroke(255, 255, 0);
+      strokeWeight(3);
+      ellipse(this.x, this.y, this.dd, this.dd);
+    }
+  }
+
+  move() {
+    if (this.on) {
+      this.dd++;
+      if (this.dd > width) {
+        this.dd = 1;
+      }
+    }
+  }
+
+  check(xx, yy) {
+    let distance = dist(this.x, this.y, xx, yy);
+    if (distance < this.d/2) {
+      this.on = true;
+      this.c = color(255, 0, 0);
+    } else {
+      this.on = false;
+      this.c = color(255, 255, 0);
+      this.dd = 1;
+    }
+  }
+}

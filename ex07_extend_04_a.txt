@@ -1,0 +1,17 @@
+// [질문5.1] 반사하는 원
+
+let x = 0, velocity = 1;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  ellipse(x, height/2, 30, 30);
+  x += velocity;
+  // ❶ 세미콜론 오류!
+  if (x > width); {
+    velocity *= -1;
+  }
+}

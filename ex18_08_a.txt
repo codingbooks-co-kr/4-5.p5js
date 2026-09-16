@@ -1,0 +1,27 @@
+// 낙하, 반사하는 원 (p5.Vector 클래스 미사용)
+
+let x = 250, y = 0;		// 위치
+let velocity = 0;       	// 속도
+let accel = 0.3;        	// 가속도
+let friction = 0.95;     	// 마찰율
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+  
+  fill(255);
+  ellipse(x, y, 30, 30);
+  velocity += accel;
+  y += velocity;
+  if (y > height) {
+    y = height;
+    velocity *= -1;
+    velocity *= friction;
+  }
+}

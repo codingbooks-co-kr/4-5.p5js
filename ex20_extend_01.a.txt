@@ -1,0 +1,12 @@
+// 일반 함수에 의한 동기적 처리
+
+function setup() {
+  begin();			// ❶ 함수 호출
+  print('Two');		// ❺
+  print('Three');		// ❻
+}
+
+function begin(){		// ❷
+  print('시작합니다!');	// ❸
+  print('One');		// ❹
+}

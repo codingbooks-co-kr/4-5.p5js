@@ -1,0 +1,17 @@
+// 객체형: 참조값(=주솟값) 복사
+
+function setup() {
+  let str1;
+  str1 = new Name();	// 객체 생성 및 속성 초기화
+  let str2 = str1;		// 참조값 복사
+  str1.name = 'processing';	// 속성값 갱신(=값 변경 가능)
+
+  print(str1, str2);
+  print(str1 === str2);	// true, 두 변수가 참조하는 값이 같음
+}
+
+class Name {		// 클래스 정의
+  constructor() {		// 생성자
+    this.name = 'p5.js';	// 속성 초기화
+  }
+}

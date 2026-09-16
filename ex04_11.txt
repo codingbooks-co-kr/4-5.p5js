@@ -1,0 +1,13 @@
+// 출력 화면의 왼쪽 상단의 사사분면에 랜덤한 위치, 랜덤한 색상의 원을 생성
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {
+  let x = random(width/2); 
+  let y = random(height/2);
+  fill(random(255), random(255), random(255), 200);
+  ellipse(x, y, 30, 30);
+}

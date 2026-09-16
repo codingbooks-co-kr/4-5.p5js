@@ -1,0 +1,16 @@
+// 회전운동 (p5.Vector 클래스 사용)
+
+let position, theta = 0.0, r = 250.0;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  position = createVector(0, 0);
+}
+
+function draw() {
+  position.x = width/2 + r * cos(theta);
+  position.y = height/2 + r * sin(theta);
+  ellipse(position.x, position.y, 30, 30);
+  theta += 0.05;
+}

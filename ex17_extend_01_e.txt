@@ -1,0 +1,6 @@
+function setup() {
+  let str = "Hello p5.js!";
+  print(str.startsWith("H"));	// str이 "H"로 시작하므로 true 반환
+  print(str.startsWith("He"));	// str이 "He"로 시작하므로 true 반환
+  print(str.startsWith("p"));	// str이 "p"로 시작하지 않으므로 false
+}

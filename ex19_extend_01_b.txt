@@ -1,0 +1,11 @@
+// 배열의 선언, 생성 및 초기화를 한번에
+
+function setup() {
+  // 배열의 선언, 생성, 초기화를 한번에
+  let x = new Array(0, 50, 100);
+  print(x);
+
+  for (let i = 0; i < 3; i++) {
+    print(x[i]);
+  }
+}

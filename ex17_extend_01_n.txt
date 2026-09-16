@@ -1,0 +1,9 @@
+function setup() {
+  let str1 = "Hello my name is p5.js!";
+  // 공백으로 분리된 배열을 반환
+  print(str1.split(" "));
+  
+  let str2 = "2022/12/31";
+  // “/”로 분리된 배열을 반환
+  print(str2.split("/"));
+}

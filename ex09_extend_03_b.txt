@@ -1,0 +1,37 @@
+let dec = 127;
+let hexa = "7f";
+let bin = "1111111";
+
+function setup() {
+  // 10진수→2진수
+  let bin1 = dec.toString(2);
+  print(bin1);
+
+  // 16진수 -> 10진수 -> 2진수
+  let bin2 = parseInt(hexa, 16).toString(2);
+  print(bin2);
+
+  // 10진수→16진수
+  let hexa1 = dec.toString(16);
+  print(hexa1);
+
+  // 10진수→16진수
+  let hexa2 = hex(dec, 2);
+  print(hexa2);
+
+  // 2진수 -> 10진수 -> 16진수
+  let hexa3 = parseInt(bin, 2).toString(16);
+  print(hexa3);
+
+  // 16진수 -> 10진수
+  let dec1 = parseInt(hexa, 16);
+  print(dec1);
+
+  // 16진수 -> 10진수
+  let dec2 = unhex(hexa);
+  print(dec2);
+
+  // 2진수 -> 10진수
+  let dec3 = parseInt(bin, 2);
+  print(dec3);
+}

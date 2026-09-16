@@ -1,0 +1,31 @@
+// 기어 모양을 만들고 마우스의 움직임으로 회전 가·감속
+
+let velocity = 0.0, phase = 0.0, r = 150.0;
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  noStroke();
+  fill(255, 255, 0);
+  ellipse(width/2, height/2, 2*r, 2*r);
+
+  let d = dist(width/2, height/2, mouseX, mouseY);
+  if (d < r) {
+    velocity = map(d, r, 0, 0, 5);
+    phase += velocity;
+  }
+  for (let degree = 0; degree < 360; degree += 30) {
+    let theta = radians(degree + phase);
+    let x = width/2 + r * cos(theta);
+    let y = height/2 + r * sin(theta);
+    ellipse(x, y, 50, 50);
+  }
+
+  fill(255);
+  textSize(30);
+  textAlign(CENTER);
+  text('velocity: ' + nf(velocity, 1, 1), width/2, 50);
+}

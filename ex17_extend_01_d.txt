@@ -1,0 +1,7 @@
+function setup() {
+  let str = "Hello p5.js!";
+  print(str.includes("p5.js"));	// "p5.js"를 포함하므로 true 반환
+  print(str.includes("kim"));	// "kim"을 포함하지 않으므로 false 반환
+  print(str.includes("l"));	// "l"을 포함하므로 true 반환
+  print(str.includes("x"));	// "x"을 포함하지 않으므로 false 반환
+}

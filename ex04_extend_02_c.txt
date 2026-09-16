@@ -1,0 +1,19 @@
+function setup() {
+  print(int(true));			// 논리
+  print(int(false));			// 논리
+  print(int('10'));			// 문자열
+  print(int(20.5));			// 실수
+  print(int([true, false, '10', 20.5]));	// 배열
+
+  print(float(true));			// 논리
+  print(float(false));			// 논리
+  print(float('10.5'));			// 문자열
+  print(float([true, false, '10.5', '20.5']));// 배열
+
+  print(str(10.5));			// 실수
+  print(str(10)); 			// 정수
+  print(str('10'));			// 문자열
+  print(str(true));			// 논리
+  print(str(false));			// 논리
+  print(str([true, '10.5', 10.5]));		// 배열
+}

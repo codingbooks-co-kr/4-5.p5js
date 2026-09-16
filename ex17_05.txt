@@ -1,0 +1,41 @@
+// Rectangle 클래스를 이용하여 마우스가 사각형 내부에 들어가면 색상 변경
+
+let r;
+
+function setup() {
+  createCanvas(500, 500);
+  r = new Rectangle(150, 150, 200, 200);
+}
+
+function draw() {
+  background(0);
+  if (r.contains(mouseX, mouseY)) {
+    fill(255, 0, 0);
+  } else {
+    fill(255, 255, 0);
+  }
+  r.display();
+}
+
+// Rectangle 클래스
+
+class Rectangle {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  display() {
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  contains(x, y) {
+    if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

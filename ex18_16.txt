@@ -1,0 +1,69 @@
+// 마우스를 누르면 랜덤 이동하다가 감쇄하며 멈추는 원 (클래스로 구현)
+
+let c;
+
+function setup() {
+  createCanvas(500, 500); 
+  c = new Circle();
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  c.display();
+  c.move();
+  c.bounce();
+}
+
+function mousePressed() {
+  c.randomMove();
+}
+
+// Circle 클래스
+
+class Circle {
+  constructor() {
+    this.position = createVector(width/2, 50);
+    this.velocity = createVector(random(-5, 5), random(-5, 5));
+    this.d = 30;
+    this.friction = 0.99;
+    this.col = color(255);
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.velocity.mult(this.friction);
+    this.position.add(this.velocity);
+  }
+
+  randomMove() {
+    this.velocity.set(random(-5, 5), random(-5, 5));
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+}

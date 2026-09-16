@@ -1,0 +1,16 @@
+// 원의 등속 이동 (p5.Vector 클래스 사용)
+
+let position;
+let velocity;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  position = createVector(0, 0);
+  velocity = createVector(1, 1);
+}
+
+function draw() {
+  ellipse(position.x, position.y, 30, 30);
+  position.add(velocity);
+}

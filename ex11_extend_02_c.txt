@@ -1,0 +1,20 @@
+let r = 100.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  distance();
+}
+
+// 익명함수 (유형1)
+let distance = function () {
+  let x = width / 2;
+  let y = height / 2;
+  let d = dist(x, y, mouseX, mouseY);
+  fill(d, d, 255);
+  ellipse(x, y, r*2, r*2);
+  print(d);
+};

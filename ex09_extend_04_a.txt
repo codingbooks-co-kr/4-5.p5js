@@ -1,0 +1,9 @@
+let array = [40, 70, 100];
+
+function setup() {
+  background(200);
+  for (let i = 0; i < 3; i++) {
+    noFill();
+    ellipse(50, 50, array[i], array[i]);
+  }
+}

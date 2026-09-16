@@ -1,0 +1,20 @@
+// 원이 상하좌우 방향으로 마우스를 따라오며 서서히 감속하도록 구현
+
+let x = 0.0, y = 0.0, easing = 0.05;
+let c;
+
+function setup() {
+  createCanvas(500, 500);
+  c = color(random(255), random(255), random(255));
+}
+
+function draw() {
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  x += (mouseX - x) * easing;
+  y += (mouseY - y) * easing;
+  fill(c);
+  ellipse(x, y, 30, 30);
+}

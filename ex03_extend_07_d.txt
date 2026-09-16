@@ -1,0 +1,9 @@
+// 백틱 안에 큰따옴표와 개행 포함
+
+function setup() {
+  let s1 = 'p5.js';
+  let s2 = '자바스크립트';
+  let t = `안녕! ${s1},
+안녕! "${s2}"`;
+  print(t);
+}

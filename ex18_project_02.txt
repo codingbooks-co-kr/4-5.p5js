@@ -1,0 +1,61 @@
+// 본문 코드: 마우스로 원을 끌어 놓기 (클래스 및 p5.Vector 사용)
+
+let c;
+
+function setup() {
+  createCanvas(500, 500);
+  c = new Circle();
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  c.display();
+}
+
+function mousePressed() {
+  c.check(mouseX, mouseY);
+}
+
+function mouseDragged() {
+  c.move();
+}
+
+function mouseReleased() { 
+  c.choice = false;
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor() {
+    this.position = createVector(width/2, height/2);
+    this.choice = false;
+    this.r = 30;
+    this.col = color(random(255), random(255), random(255));
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.r*2, this.r*2);
+  }
+
+  move() {
+    if (this.choice) {
+      let mouse = createVector(mouseX, mouseY);
+      let pmouse = createVector(pmouseX, pmouseY);
+      let offset = p5.Vector.sub(mouse, pmouse);
+      this.position.add(offset);
+    }
+  }
+
+  check(x, y) {
+    let d = dist(x, y, this.position.x, this.position.y);
+    if (d < this.r) {
+      this.choice = true;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+// 마우스를 누르면 랜덤 위치에서 생성된 원들이 마우스를 따라오기
+
+let num = 100;
+let x = [], y = [];				// 위치 좌표 배열 선언
+let velocity_x = [], velocity_y = [];		// x, y 속도 배열 선언
+let easing = [];				// 감속 배열 선언
+let c = [];					// 색상 배열 선언
+
+function setup() {
+  createCanvas(500, 500);
+  reset();
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < num; i++) {
+    fill(c[i]);
+    ellipse(x[i], y[i], 10, 10);
+    velocity_x[i] = (mouseX - x[i]) * easing[i];
+    velocity_y[i] = (mouseY - y[i]) * easing[i];
+    x[i] += velocity_x[i];
+    y[i] += velocity_y[i];
+  }
+}
+
+function reset() {
+  for (let i = 0; i < num; i++) {
+    x[i] = random(width);
+    y[i] = random(height);
+    velocity_x[i] = 0;
+    velocity_y[i] = 0;
+    easing[i] = random(0.001, 0.01);
+    c[i] = color(random(255), random(255), random(255));
+  }
+}
+
+function mousePressed() {
+  reset();
+}

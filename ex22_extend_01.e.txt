@@ -1,0 +1,21 @@
+let slider;
+
+function setup() {
+  createCanvas(500, 500);
+  let element = createElement('h2', 'Change circle color!');
+  element.position(10, 480);			// 제목 위치 설정
+  let col = color(255, 0, 0);
+  element.style('color', col);			// 제목 색상 설정
+
+  slider = createSlider(0, 255, 100);		// 슬라이더 범위(0∼255), 초깃값(100)
+  slider.position(10, 540);			// 슬라이더 위치 설정
+  slider.size(220);				// 슬라이더 크기 설정
+}
+
+function draw() {
+  background(200);
+  let value = slider.value();			// 슬라이더 값 읽기
+  let c = color(0, value, 0);
+  fill(c);
+  ellipse(width/2, height/2, 300, 300);
+}

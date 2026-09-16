@@ -1,0 +1,7 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+
+  let result = array.reverse();		// 원본 배열을 역순으로 변경
+  print(array);			// 원본 배열도 변경됨
+  print(result);			// 반환 배열
+}

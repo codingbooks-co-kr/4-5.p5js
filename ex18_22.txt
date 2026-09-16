@@ -1,0 +1,92 @@
+// 본문 코드: 마우스를 누른 위치에 인력을 만들어 100개의 원 객체들을 끌어당기기
+
+let c = [];
+let mouse;
+
+function setup() {
+  createCanvas(500, 500);
+  mouse = createVector(0, 0);
+  for (let i = 0; i < 100; i++) {
+    c[i] = new Circle();
+    c[i].firstForce();
+  }
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  fill(255, 0, 0);
+  ellipse(mouse.x, mouse.y, 30, 30);
+
+  for (let i = 0; i < c.length; i++) {
+    c[i].display();
+    c[i].move();
+    c[i].bounce();
+    c[i].addForce(mouse);
+  }
+}
+
+function mousePressed() {
+  mouse.x = mouseX;
+  mouse.y = mouseY;
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor() {
+    this.position = createVector(width/2, height/2);
+    this.velocity = createVector(0, 0);
+    this.accel = createVector(0, 0);
+    this.d = 10;
+    this.friction = 0.99;
+    this.col = color(255);
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.velocity.mult(this.friction);
+    this.velocity.add(this.accel);
+    this.position.add(this.velocity);
+    this.accel.mult(0);
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+
+  firstForce() {
+    let force = createVector(random(-5, 5), random(-5, 5));
+    this.accel.add(force);
+  }
+
+  addForce(mouse) {
+    let force = p5.Vector.sub(mouse, this.position);
+    force.normalize();
+    force.mult(0.3);
+    this.accel.add(force);
+  }
+}

@@ -1,0 +1,16 @@
+function setup() {
+  let code1 = "\0".charCodeAt(0);	// 첫문자 코드
+  print(code1);	
+  
+  let code2 = " ".charCodeAt(0);	// 공백문자
+  print(code2);
+  
+  let code3 = "0".charCodeAt(0);	// 숫자문자
+  print(code3);
+
+  let code4 = "a".charCodeAt(0);	// 'a'의 유니코드
+  print(code4);
+  
+  let code5 = "abc".charCodeAt(1);	// 'b'의 유니코드
+  print(code5);
+}

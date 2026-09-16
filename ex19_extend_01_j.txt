@@ -1,0 +1,11 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+  let arr = array.pop(); 		// 배열 맨 끝의 요소 삭제
+  print(arr);			// 삭제된 요소 반환
+  print(array);			// 원본 배열
+
+  array = [10, 20, 30, 40];
+  arr = array.shift(); 			// 배열 맨 앞의 요소 삭제
+  print(arr);			// 삭제된 요소 반환
+  print(array);			// 원본 배열
+}

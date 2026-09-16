@@ -1,0 +1,19 @@
+// 불규칙 운동 (p5.Vector 클래스 사용)
+
+let position, velocity;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  position = createVector(250, 250);
+  velocity = createVector(0, 0);
+}
+
+function draw() {
+  velocity.x = random(-10, 10);
+  velocity.y = random(-10, 10);
+  position.add(velocity);
+  ellipse(position.x, position.y, 30, 30);
+  position.x = constrain(position.x, 0, width);
+  position.y = constrain(position.y, 0, height);
+}

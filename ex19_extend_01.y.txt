@@ -1,0 +1,13 @@
+function setup() {
+  let array = [1, 2, 1, 2, 3, 1, 2, 5, 4, 3, 3, 6, 5];
+  let result = array.sort().reduce((acc, cur) => {
+    let length = acc.length;
+    // 첫 번째 값 추가, 이전값(acc)과 현재값(cur)이 같지 않을 때만 현재값(cur) 추가
+    if (length === 0 || acc[length - 1] !== cur) {
+      acc.push(cur);
+    }
+    // print(length, cur);		// 처리 과정 확인
+    return acc;			// 반환 배열
+  }, []);
+  print(result);
+}

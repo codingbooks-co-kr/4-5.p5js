@@ -1,0 +1,29 @@
+// 마우스를 누르면 회전 운동의 반경 증가, 마우스에서 손을 떼면 반경 감소
+
+let position, degree = 0, theta = 0, power = 0;
+
+function setup() {
+  createCanvas(500, 500);
+  position = createVector(0, 0);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke(); 
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  if (mouseIsPressed) {
+    power++;
+  } else {
+    power--;
+  }
+  power = constrain(power, 0, width/2);
+  degree += power * 0.1;
+  theta = radians(degree);
+  position.x = width / 2 + power * sin(theta);
+  position.y = height / 2 + power * cos(theta);
+
+  fill(255, 255, 0);
+  ellipse(position.x, position.y, 30, 30);
+}

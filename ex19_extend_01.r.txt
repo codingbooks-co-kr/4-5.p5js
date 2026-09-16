@@ -1,0 +1,17 @@
+function setup() {
+  let array = [40, 30, 10, 20];
+
+  let result = array.sort();		// 원본 배열 요소를 정렬
+  print(array);			// 원본 배열도 변경됨
+  print(result);			// 반환 배열
+
+  array = ['P5.js', 'Javascript', 'C++', 'Python'];
+  result = array.sort();		// 원본 배열 요소를 정렬
+  print(array);			// 원본 배열도 변경됨
+  print(result);			// 반환 배열
+
+  array = ['수박', '사과', '참외', '바나나'];
+  result = array.sort();		// 원본 배열 요소를 정렬
+  print(array);			// 원본 배열도 변경됨
+  print(result);			// 반환 배열
+}

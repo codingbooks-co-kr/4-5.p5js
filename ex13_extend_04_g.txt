@@ -1,0 +1,61 @@
+// [질문13.5] 본문 코드: 원 좌우 반사
+
+let c, count = 0;
+
+function setup() {
+  createCanvas(300, 300);
+  c = new Circle();
+}
+
+function draw() {
+  background(0);
+  if (count === 0) {
+    c.display();
+  } else if (count === 1) {
+    let cc = color(0, 255, 0);
+    c.display(cc);
+  } else {
+    let cc = color(0, 0, 255);
+    c.display(cc, 60);
+  }
+  c.move();
+}
+
+function mousePressed() {
+  count++;
+  if (count > 2) {
+    count = 0;
+  }
+}
+
+// 클래스 코드
+
+class Circle {
+  constructor() {
+    this.c = color(255, 0, 0);
+    this.x = width / 2;
+    this.y = height / 2;
+    this.d = 30;
+    this.velocity = 1;
+  }
+
+  display(...args) {
+    if (args.length === 0) {
+      fill(this.c);
+      ellipse(this.x, this.y, this.d, this.d);
+    } else if (args.length === 1) {
+      fill(args[0]);
+      ellipse(this.x, this.y, this.d, this.d);
+    } else {
+      fill(args[0]);
+      ellipse(this.x, this.y, args[1], args[1]);
+    }
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}

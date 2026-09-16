@@ -1,0 +1,11 @@
+function setup() {
+  display("Kim");
+  display("Kim", "Lee");
+  display("Kim", "Lee", "Park");
+}
+
+function display(...args) {
+  for (let i = 0; i < args.length; i++) {
+    print(args[i]);
+  }
+}

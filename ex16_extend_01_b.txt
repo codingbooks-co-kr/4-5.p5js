@@ -1,0 +1,64 @@
+// 자바스크립트 기반 p5.js의 본문 코드
+
+let sh = [];
+
+function setup() {
+  createCanvas(500, 300);
+  sh[0] = new Circle(100, 100, 50);
+  sh[1] = new Square(200, 150, 50);
+  sh[2] = new Triangle(400, 200, 50);
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < sh.length; i++) {
+    sh[i].display();
+  }
+}
+
+// 클래스 코드 
+class Shape { 
+  constructor(x, y, d) {
+    this.x = x;
+    this.y = y;
+    this.d = d;
+  }
+
+  display() {
+    textSize(this.d);
+    text("Shape", this.x, this.y);
+  }
+}
+
+class Circle extends Shape {
+  constructor(x, y, d) {
+    super(x, y, d);
+  }
+
+  display() {
+    fill(255, 0, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+}
+
+class Square extends Shape {
+  constructor(x, y, d) {
+    super(x, y, d);
+  }
+
+  display() {
+    fill(0, 255, 0);
+    rect(this.x, this.y, this.d, this.d);
+  }
+}
+
+class Triangle extends Shape {
+  constructor(x, y, d) {
+    super(x, y, d);
+  }
+
+  display() {
+    fill(0, 0, 255);
+    triangle(this.x, this.y, this.x-this.d, this.y+this.d, this.x+this.d, this.y+this.d);
+  }
+}

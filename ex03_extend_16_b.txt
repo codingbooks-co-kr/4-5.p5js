@@ -1,0 +1,17 @@
+// ❷ 상→하 이동
+
+// 전역변수
+let y = 0;
+
+function setup() {
+  createCanvas(300, 300);
+  background(200);
+}
+
+function draw() {
+  // 지역변수
+  let x = 150;
+  let d = 30;
+  ellipse(x, y, d, d);
+  y++;
+}

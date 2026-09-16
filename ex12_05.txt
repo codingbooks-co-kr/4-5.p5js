@@ -1,0 +1,27 @@
+// 불규칙 운동하는 원의 색상과 크기를 마우스를 눌러 변경
+
+let c = 255;
+let d = 20.0, tx = 0.0, ty = 1.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() { 
+  // 페이딩 효과
+  noStroke();  
+  fill(0, 10);  
+  rect(0, 0, width, height);
+
+  let x = noise(tx) * width;
+  let y = noise(ty) * height;
+  fill(c, 255, 255);
+  ellipse(x, y, d, d);
+  tx += 0.01;
+  ty += 0.01;
+}
+
+function mousePressed() {
+  c = random(0, 255);
+  d = random(10, 100);
+}

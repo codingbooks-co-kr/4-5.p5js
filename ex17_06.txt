@@ -1,0 +1,48 @@
+// Rectangle 클래스를 이용하여 사각형이 또 다른 사각형에 교차하면 색상 변경
+
+let r1, r2;
+
+function setup() {
+  createCanvas(500, 500);
+  r1 = new Rectangle(150, 150, 200, 200);
+  r2 = new Rectangle(0, 0, 50, 50);
+}
+
+function draw() {
+  background(0);
+  r2.x = mouseX;
+  r2.y = mouseY;
+  if (r1.intersects(r2)) {
+    fill(255, 0, 0);
+  } else {
+    fill(255, 255, 0);
+  }
+  r1.display();
+  r2.display();
+}
+
+// Rectangle 클래스
+
+class Rectangle {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  display() {
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  intersects(rec) {
+    if (this.x < rec.x + rec.width &&		// 작은 사각형이 왼쪽 밖에서 들어올 때
+      this.x + this.width > rec.x &&		// 작은 사각형이 오른쪽 밖에서 들어올 때
+      this.y < rec.y + rec.height &&		// 작은 사각형이 위쪽 밖에서 들어올 때
+      this.y + this.height > rec.y) {		// 작은 사각형이 아래쪽 밖에서 들어올 때
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

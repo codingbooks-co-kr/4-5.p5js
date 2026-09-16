@@ -1,0 +1,16 @@
+// 이미지 객체를 생성 후 출력
+
+let img;
+
+function preload() {
+  img = loadImage("flower.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  image(img, 0, 0);
+}

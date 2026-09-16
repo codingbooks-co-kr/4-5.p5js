@@ -1,0 +1,9 @@
+let names = ['Kim', 'Lee', 'Park'];
+
+function setup() {
+  background(200);
+  let name = random(names);
+  textSize(20);
+  textAlign(CENTER);
+  text(name, width/2, height/2);
+}

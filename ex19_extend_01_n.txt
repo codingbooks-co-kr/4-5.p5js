@@ -1,0 +1,12 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+
+  let result1 = array.join();	// 기본 구분자는 콤마(,)
+  print(result1);
+
+  let result2 = array.join(" ");	// 구분자는 공백
+  print(result2);
+  
+  let result3 = array.join(":");	// 구분자는 ":"
+  print(result3);
+}

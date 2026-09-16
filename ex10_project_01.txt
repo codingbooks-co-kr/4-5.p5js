@@ -1,0 +1,44 @@
+// 마우스를 누르면 상하좌우 반사하는 원 배열의 크기와 색상이 랜덤하게 변경
+
+let num = 10;
+let x = [], y = []
+let velocity_x = [], velocity_y = [];
+let d = [], c = [];
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < num; i++) {
+    x[i] = width / 2;
+    y[i] = height / 2;
+    velocity_x[i] = random(-5, 5);
+    velocity_y[i] = random(-5, 5);
+    d[i] = 50;
+    c[i] = color(255);
+  }
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < num; i++) {
+    fill(c[i]);
+    ellipse(x[i], y[i], d[i], d[i]);
+    x[i] += velocity_x[i];
+    y[i] += velocity_y[i];
+
+    if (x[i] < 0 || x[i] > width) {
+      velocity_x[i] *= -1;
+    }
+    if (y[i] < 0 || y[i] > height) {
+      velocity_y[i] *= -1;
+    }
+
+    if (mouseIsPressed) {
+      d[i] = random(30, 70);
+      c[i] = color(random(255), random(255), random(255));
+    }
+  }
+}

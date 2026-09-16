@@ -1,0 +1,18 @@
+// 원으로 이루어진 움직이는 사인 파형의 궤적 만들기
+
+let theta = 0.0, angle = 0.0;
+
+function setup() {
+  createCanvas(500, 200);
+}
+
+function draw() {
+  background(0);
+  theta = angle;
+  for (let x = 0; x <= width; x += 10) {
+    let y = height/2 + 100 * sin(theta);
+    ellipse(x, y, 30, 30);
+    theta += 0.2;
+  }
+  angle += 0.01;
+}

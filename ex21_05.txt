@@ -1,0 +1,26 @@
+// 사운드의 진폭 변화를 원의 크기 변화로 변경
+
+let audio, amp;
+
+function preload() {
+  audio = loadSound("hometown.mp3");
+}
+
+function setup() {
+  createCanvas(500, 500);
+  amp = new p5.Amplitude();
+  audio.play();
+}
+
+function draw() {
+  // 페이딩 효과 구현
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  let level = amp.getLevel();
+  let size = map(level, 0, 1, 0, width*2);
+
+  fill(255, 255, 0);
+  ellipse(width/2, height/2, size, size);
+}

@@ -1,0 +1,15 @@
+let degree = 0.0;
+
+function setup() {
+  createCanvas(360, 300);
+  background(0);
+}
+
+function draw() {
+  let y = 100.0 * sin(radians(degree));
+  ellipse(degree, height/2+y, 30, 30);
+  degree++;
+  if (degree > width) { 
+    degree = 0;
+  }
+}

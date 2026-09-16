@@ -1,0 +1,22 @@
+// 랜덤하게 움직이지만 위쪽으로 움직일 확률이 높은 원
+
+let x = 150.0, y = 150.0, r;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  ellipse(x, y, 30, 30);
+  r = random(1);
+  if (r < 0.2) {
+    x++;
+  } else if (r < 0.4) {
+    x--;
+  } else if (r < 0.6) {
+    y++;
+  } else {
+    y--;
+  }
+}

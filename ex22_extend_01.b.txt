@@ -1,0 +1,22 @@
+let radio, name = "";
+
+function setup() {
+  createCanvas(500, 500);
+  radio = createRadio();		// 라디오 버튼 생성
+  radio.option("p5.js");		// 라디오 버튼의 선택 옵션 설정
+  radio.option("javascript");		// 라디오 버튼의 선택 옵션 설정
+  radio.option("processing");		// 라디오 버튼의 선택 옵션 설정
+  radio.style('font-size', '20px');		// 라디오 버튼 폰트 크기
+  radio.changed(selectRadio);		// 라디오 버튼 변경 시 콜백함수 호출
+  background(0);
+}
+
+function draw() {
+  fill(random(255), random(255), random(255));
+  text(name, random(width), random(height));
+}
+
+function selectRadio() {		// 콜백함수
+  name = radio.value();		// 선택한 옵션 읽기
+  background(0);
+}

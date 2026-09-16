@@ -1,0 +1,126 @@
+// 본문 코드: 도형별로 도형 안에 마우스가 위치하면 도형의 이름과 면적이 표시
+
+let sh = [];
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < 12; i++) {
+    let r = random(1);
+    if (r < 0.5) {
+      sh[i] = new Circle(color(255, 0, 0), random(width), random(height), random(20, 50), "Circle");
+    } else {
+      sh[i] = new Square(color(0, 255, 0), random(width), random(height), random(20, 50), "Square");
+    }
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < sh.length; i++) {
+    sh[i].display(); 			// 오버라이딩
+    sh[i].move(); 			// 상속
+
+    // 해당 객체별 메소드 호출
+    if (sh[i] instanceof Circle) {
+      sh[i].check(mouseX, mouseY);
+      sh[i].area();
+    } else if (sh[i] instanceof Square) {
+      sh[i].check(mouseX, mouseY);
+      sh[i].area();
+    }
+  }
+}
+
+// 클래스
+
+class Shape {				// 상위 클래스
+  constructor(c, x, y, d, str) {
+    this.c = c;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.str = str;
+    this.on = false;
+    this.dd = 1;
+  }
+
+  display() {
+    fill(this.c);
+    textSize(50);
+    text("Shape", this.x, this.y);
+  }
+
+  move() {
+    if (this.on) {
+      this.dd++;
+    }
+  }
+}
+
+class Circle extends Shape {			// 하위 클래스
+  constructor(c, x, y, d, str) {
+    super(c, x, y, d, str);
+  }
+
+  display() {					// 메소드 오버라이딩
+    noFill();
+    stroke(this.c);
+    ellipse(this.x, this.y, this.d, this.d);
+    if (this.on) {
+      ellipse(this.x, this.y, this.dd, this.dd);
+    }
+  }
+
+  check(xx, yy) {				// 마우스가 원 안에 있는지 확인
+    let distance = dist(this.x, this.y, xx, yy);
+    if (distance < this.d / 2) {
+      this.on = true;
+    } else {
+      this.on = false;
+      this.dd = 1;
+    }
+  }
+
+  area() {					// 원 정보와 넓이 표시
+    if (this.on) {
+      fill(this.c);
+      textSize(20);
+      let s = this.str + " " + int(PI * this.d/2 * this.d/2);
+      text(s, this.x + 20, this.y);
+    }
+  }
+}
+
+class Square extends Shape {  		// 하위 클래스
+  constructor(c, x, y, d, str) {
+    super(c, x, y, d, str);
+  }
+
+  display() {    				// 메소드 오버라이딩
+    noFill();
+    stroke(this.c);
+    rectMode(CENTER);
+    rect(this.x, this.y, this.d, this.d);
+    if (this.on) {
+      rect(this.x, this.y, this.dd, this.dd);
+    }
+  }
+
+  check(xx, yy) {    				// 마우스가 사각형 안에 있는지 확인
+    if ((this.x-this.d/2 < xx) && (this.x+this.d/2 > xx) && (this.y-this.d/2 < yy) && (this.y+this.d/2 > yy)) {
+      this.on = true;
+    } else {
+      this.on = false;
+      this.dd = 1;
+    }
+  }
+
+  area() {    					// 사각형 정보와 넓이 표시
+    if (this.on) {
+      fill(this.c);
+      textSize(20);
+      let s = this.str + " " + int(this.d * this.d);
+      text(s, this.x + 20, this.y);
+    }
+  }
+}

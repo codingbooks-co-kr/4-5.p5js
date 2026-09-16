@@ -1,0 +1,27 @@
+// 탄성 (p5.Vector 클래스 사용)
+
+let position, velocity, accel;
+let mouse, force;
+let k = 0.1, m = 1.0, damping = 0.9;		// 스프링상수(k), 질량(m), 댐핑상수(damping)
+
+function setup() { 
+  createCanvas(500, 500);
+  position = createVector(250, 0);
+  velocity = createVector(0, 0);	
+  accel = createVector(0, 0);
+} 
+
+function draw() {
+  background(0);
+  mouse = createVector(0, mouseY);
+  force = p5.Vector.sub(mouse, position);		// 벡터 뺄셈
+  force.mult(k);
+  accel = force.div(m);					// 벡터 나눗셈
+  velocity.add(accel);					// 벡터 덧셈
+  velocity.mult(damping);				// 벡터 곱셈
+  position.add(velocity);
+
+  stroke(255);
+  line(width/2, 0, width/2, position.y);
+  ellipse(width/2, position.y, 30*m, 30*m);
+}

@@ -1,0 +1,5 @@
+function setup() {
+  let str = "Hello p5.js!";
+  print(str.toUpperCase());	// str 문자열을 대문자로 변경 
+  print(str.toLowerCase());	// str 문자열을 소문자로 변경 
+}

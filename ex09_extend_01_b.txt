@@ -1,0 +1,18 @@
+function setup() {
+  createCanvas(300, 300);
+  frameRate(1);
+}
+
+function draw() {
+  background(0);
+  let letter = char( random(0xAC00, 0xD7A4) );
+  let code = letter.charCodeAt(0);
+
+  fill(255);
+  textSize(30);
+  textAlign(CENTER, CENTER);
+  text(code, width/2, 30);
+  
+  textSize(100);
+  text(letter, width/2, height/2);	
+}

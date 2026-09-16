@@ -1,0 +1,16 @@
+// 콜백함수에 의한 동기적 처리2
+
+function setup() {
+  // 익명함수를 직접 전달
+  begin(function() {
+    print('One')
+  });
+
+  print('Two');
+  print('Three');
+}
+
+function begin(startFirst) {
+  print('시작합니다!');
+  startFirst();
+}

@@ -1,0 +1,15 @@
+function setup() {
+  let obj1 = [ ];		// ① 배열 리터럴로 객체 생성
+  print(typeof obj1);
+  
+  let obj2 = { };		// ② 객체 리터럴로 객체 생성
+  print(typeof obj2);
+  
+  function Circle1() { }		// ③ (사용자 정의) 생성자 함수 선언
+  let obj3 = new Circle1();	// new 연산자로 객체 생성
+  print(typeof obj3);
+
+  class Circle2 { }		// ④ (사용자 정의) 클래스 선언
+  let obj4 = new Circle2();	// new 연산자로 객체 생성
+  print(typeof obj4);
+}

@@ -1,0 +1,11 @@
+// 문자열 및 배열을 요소로 분리 후 매개변수로 전달
+
+function setup() {
+  display(..."Kim");
+  display(...["Kim", "Lee"]);
+  display(...["Kim", "Lee", "Park"]);
+}
+
+function display(...args) {
+  print(args);
+}

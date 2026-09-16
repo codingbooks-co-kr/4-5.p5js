@@ -1,0 +1,63 @@
+// 본문 코드: 랜덤한 초기 위치에서 시작하여 원 객체들 상호 간 만유인력 구현
+
+let c = [];
+
+function setup() {
+  createCanvas(500, 300);
+  for (let i = 0; i < 100; i++) {
+    c[i] = new Circle();
+  }
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < c.length; i++) {
+    c[i].display();
+    c[i].move();
+    for (let j = 0; j < c.length; j++) {
+      if (i !== j) {
+        c[i].addForce(c[j]);
+      }
+    }
+  }
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor() {
+    this.position = createVector(random(width), random(height));
+    this.velocity = createVector(0, 0);
+    this.accel = createVector(0, 0);
+    this.d = 2;
+    this.friction = 0.99;
+    this.col = color(255);
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.velocity.mult(this.friction);
+    this.velocity.add(this.accel);
+    this.position.add(this.velocity);
+    this.accel.mult(0);
+  }
+
+  addForce(c) {
+    let distance = p5.Vector.dist(c.position, this.position);
+    distance  = constrain(distance, 1, width);
+    let strength = 1 / (distance * distance);
+
+    let force = p5.Vector.sub(c.position, this.position);
+    force.normalize();
+    force.mult(strength);
+    this.accel.add(force);
+  }
+}

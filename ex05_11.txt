@@ -1,0 +1,19 @@
+// 마우스의 x축 위치까지 따라오는 원
+
+let x = 150;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  stroke(255); 
+  line(mouseX, 0, mouseX, height); 
+  ellipse(x, height/2, 50, 50);
+  if (mouseX > x) {
+    x++;
+  } else {
+    x--;
+  }
+}

@@ -1,0 +1,81 @@
+// 본문 코드: 1초마다 크기가 랜덤하게 바뀌는 다섯 개의 원 객체 (병렬)
+
+let c = [];
+let timer;
+
+function setup() {
+  createCanvas(300, 300);
+  for (let i = 0; i < 5; i++) {
+    c[i] = new Circle(random(255), random(width), random(height), random(10, 50), random(-3, 3), random(-3, 3));
+  }
+  timer = new Timer(1000);
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < c.length; i++) { 
+    c[i].display();
+    c[i].move();
+  }
+  if (timer.check()) {
+    timer.start();
+    for (let i = 0; i < c.length; i++) {
+      c[i].change();
+    }
+  }
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(c, x, y, d, velocity_x, velocity_y) {
+    this.c = c;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity_x = velocity_x;
+    this.velocity_y = velocity_y;
+  }
+
+  display() {
+    fill(this.c, 255, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+
+  move() {
+    this.x += this.velocity_x;
+    this.y += this.velocity_y;
+    if (this.x < 0 || this.x > width) {
+      this.velocity_x *= -1;
+    }
+    if (this.y < 0 || this.y > height) {
+      this.velocity_y *= -1;
+    }
+  }
+
+  change() {
+    this.d = random(10, 50);
+  }
+}
+
+// Timer 클래스 코드
+
+class Timer {
+  constructor(time) {
+    this.time = time;
+    this.previous_time = 0;
+  }
+
+  start() {
+    this.previous_time = millis();
+  }
+
+  check() { 
+    let interval = millis() - this.previous_time;
+    if (interval > this.time) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

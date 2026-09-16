@@ -1,0 +1,15 @@
+// 배열과 반복문을 사용하여 여섯 개의 막대 그래프 그리기
+
+let value = [50, 100, 150, 200, 250, 300];
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < 6; i++) {
+    fill(255, 255, i*50);
+    rect(i*50, height-value[i], 40, value[i]);
+  }
+}

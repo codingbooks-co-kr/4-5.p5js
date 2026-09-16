@@ -1,0 +1,17 @@
+// 불규칙 운동 (p5.Vector 클래스 사용)
+
+let position, tx = 0.0, ty = 0.5;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  position = createVector(0, 0);
+}
+
+function draw() {
+  position.x = noise(tx) * width;
+  position.y = noise(ty) * height;
+  ellipse(position.x, position.y, 30, 30);
+  tx += 0.01;
+  ty += 0.01;
+}

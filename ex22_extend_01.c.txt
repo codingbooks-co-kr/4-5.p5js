@@ -1,0 +1,39 @@
+let c, x, checkbox1, checkbox2;
+
+function setup() {
+  createCanvas(500, 500);
+  checkbox1 = createCheckbox("color", false); 	// 첵크박스 생성
+  checkbox1.position(0, 510);			// 첵크박스 위치 설정
+  checkbox1.style("font-size", "25px"); 		// 첵크박스 폰트 크기
+  checkbox1.changed(colorChange); 		// 첵크 변경 시 콜백함수 호출
+
+  checkbox2 = createCheckbox("move", false);
+  checkbox2.position(100, 510);
+  checkbox2.style("font-size", "25px"); 
+  checkbox2.changed(moveChange); 		// 첵크 변경 시 콜백함수 호출
+
+  c = color(0, 255, 0);
+  x = width / 2;
+}
+
+function draw() {
+  background(0);
+  fill(c);
+  ellipse(x, height/2, 300, 300);
+}
+
+function colorChange() {			// 콜백함수
+  if (checkbox1.checked()) {			// 첵크박스에 첵크한 경우
+    c = color(255, 0, 0);
+  } else {    				// 첵크박스에 첵크하지 않은 경우
+    c = color(0, 255, 0);
+  }
+}
+
+function moveChange() {			// 콜백함수
+  if (checkbox2.checked()) {			// 첵크박스에 첵크한 경우
+    x = random(width);
+  } else {   				// 첵크박스에 첵크하지 않은 경우
+    x = width / 2;
+  }
+}

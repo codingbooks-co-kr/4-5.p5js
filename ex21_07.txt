@@ -1,0 +1,33 @@
+// 진행바를 만들고 마우스를 누를 때마다 사운드가 재생 및 일시 정지
+
+let audio;
+
+function preload() {
+  audio = loadSound("hometown.mp3");
+}
+
+function setup() {
+  createCanvas(500, 200);
+  audio.loop();
+}
+
+function draw() {
+  background(0);
+  
+  textSize(30);
+  textAlign(CENTER);
+  text(int(audio.currentTime()) + " / " + int(audio.duration()) + " sec", width/2, height/2);
+  let pos = map(audio.currentTime(), 0, audio.duration(), 0, 300);
+  fill(255);
+  rect(100, 120, 300, 20);
+  fill(255, 0, 0);
+  rect(100, 120, pos, 20);
+}
+
+function mousePressed() {
+  if (audio.isPlaying()) {
+    audio.pause();
+  } else {
+    audio.loop();
+  }
+}

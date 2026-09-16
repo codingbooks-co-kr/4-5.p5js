@@ -1,0 +1,46 @@
+// 본문 코드: 원 좌우 반사 (메소드 추가)
+
+let c;
+
+function setup() {
+  createCanvas(300, 300);
+  c = new Circle();
+}
+
+function draw() {
+  background(0);
+  c.display();
+  c.move();	
+  if (mouseIsPressed) {
+    c.start();
+  }
+}
+
+// 클래스 코드
+
+class Circle {
+  constructor() {
+    this.c = 255;
+    this.x = width/2;
+    this.y = height/2;
+    this.d = 30;
+    this.velocity = 1;
+  }
+
+  display() {
+    fill(this.c, 255, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+
+  start() {
+    this.x = mouseX;
+    this.y = mouseY;
+  }
+}

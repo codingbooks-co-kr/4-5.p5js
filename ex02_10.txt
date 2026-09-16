@@ -1,0 +1,21 @@
+// 원의 내부 색상과 투명도를 표현
+
+function setup() {
+  createCanvas(600, 200);
+  background(200);
+
+  noFill();
+  ellipse(100, 100, 120, 120); 
+
+  fill(0, 100);
+  ellipse(200, 100, 120, 120);
+
+  fill(255, 0, 0, 100);
+  ellipse(300, 100, 120, 120);
+
+  fill(0, 255, 0, 100); 
+  ellipse(400, 100, 120, 120);
+
+  fill(0, 0, 255, 100);
+  ellipse(500, 100, 120, 120);
+}

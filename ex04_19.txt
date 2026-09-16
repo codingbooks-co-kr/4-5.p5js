@@ -1,0 +1,14 @@
+// 마우스를 표적으로 삼아 움직이는 두 개의 선과 하나의 원 그리기
+
+function setup() {
+  createCanvas(300, 300);
+  fill(random(255), random(255), random(255)); 
+}
+
+function draw() { 
+  background(0);
+  stroke(255);
+  line(mouseX, 0, mouseX, height);
+  line(0, mouseY, width, mouseY);
+  ellipse(mouseX, mouseY, 30, 30);
+} 

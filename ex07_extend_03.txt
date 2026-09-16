@@ -1,0 +1,22 @@
+// 랜덤값이 password(=5)와 같아질 때까지 랜덤값 출력
+
+function setup() {
+  createCanvas(500, 500);
+  background(200);
+
+  textSize(30);
+  textAlign(CENTER);
+  while (true) {			// 무한 반복, for(;;)로도 사용
+    let password = int(random(-10, 10));
+    if (password === 5) {		// password가 5일 때 반복문 빠져나오기 
+      break;
+    }
+    if (password < 0) {		// 음수인 경우 출력하지 않고 건너뛰기
+      continue;
+    }
+    fill(0);
+    text(password, random(width), random(height));
+  }
+  fill(255, 0, 0);
+  text('Welcome!', width / 2, height / 2);
+}

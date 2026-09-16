@@ -1,0 +1,24 @@
+// 자전거와 돗단배 그리기
+
+function setup() {
+  createCanvas(700, 400);
+  background(0);
+
+  fill(255);
+  textSize(30);
+  textAlign(CENTER);
+  text('Bicycle & Sailboat', 350, 50);
+
+  stroke(255, 255, 0);
+  strokeWeight(5);
+  line(0, 200+100/2, 700, 200+100/2);
+
+  noFill();
+  ellipse(200, 200, 100, 100);
+  ellipse(200+100, 200, 100, 100);
+  triangle(200, 200, 200+100/2, 200-100, 200+100, 200);
+
+  triangle(400, 200, 400+100/2, 200-100, 400+100, 200);
+  line(400+100/2, 200-100, 400+100/2, 200+100/4);
+  arc(400+100/2, 200+100/4, 100, 100/2, 0, PI, CHORD);
+}

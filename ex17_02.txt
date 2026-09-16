@@ -1,0 +1,35 @@
+// 마우스를 누를 때마다 구성 문자별로 랜덤하게 이동, 임의의 키를 누르면 초기 위치로 돌아옴
+
+let str = "안녕,p5.js!";
+let x = [], y = [];
+
+function setup() {
+  createCanvas(450, 200);
+  textFont("Arial", 50);
+  for (let i = 0; i < str.length; i++) {
+    x[i] = i * 50;
+    y[i] = height / 2;
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < str.length; i++) {
+    fill(255);
+    text(str.charAt(i), x[i], y[i]);
+  }
+}
+
+function mousePressed() {
+  for (let i = 0; i < str.length; i++) {
+    x[i] += random(-10, 10);
+    y[i] += random(-10, 10);
+  }
+}
+
+function keyPressed() {
+  for (let i = 0; i < str.length; i++) {
+    x[i] = i * 50;
+    y[i] = height / 2;
+  }
+}

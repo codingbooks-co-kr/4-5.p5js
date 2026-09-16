@@ -1,0 +1,35 @@
+// setInterval()과 clearInterval()을 사용하여 원 이동 및 색상 변경 타이머 조절
+
+let x = 0, velocity = 8;
+let id1, id2;
+
+function setup() {
+  createCanvas(500, 200);
+  id1 = setInterval(start1, 1000);	// 1초마다 콜백함수(=start1) 호출
+  id2 = setInterval(start2, 2000);	// 2초마다 콜백함수(=start2) 호출
+  background(0);
+}
+
+function draw() {
+  ellipse(x, height/2, 50, 50);
+  x += velocity;			// 원 이동
+}
+
+function start1() {			// 1초마다 실행
+  x = 0;
+}
+
+function start2() {			// 2초마다 실행
+  fill(random(255), random(255), random(255));
+}
+
+function mousePressed() { 
+  if (mouseButton === LEFT) {
+    velocity = 0;			// 속도=0 (원의 이동 정지)
+    clearInterval(id1);			// 타이머1 취소
+    print('id1 stopped!');
+  } else if (mouseButton === RIGHT) {
+    clearInterval(id2);			// 타이머2 취소
+    print('id2 stopped!');
+  }
+}

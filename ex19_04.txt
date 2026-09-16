@@ -1,0 +1,30 @@
+// 마우스를 누르면 원 생성, 원 내부에서 임의의 키를 누르면 원 객체 소멸
+
+let positions = [];
+let d = 30;
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  textSize(30);
+  text("Circles: " + positions.length, 50, 50);
+
+  for (let i = 0; i < positions.length; i++) {
+    let p = positions[i];
+    ellipse(p.x, p.y, d, d);
+    text(i, p.x, p.y + 50);
+    let distance = dist(p.x, p.y, mouseX, mouseY);
+    if (keyIsPressed && distance < d/2) {
+      positions.splice(i, 1);
+    }
+  }
+}
+
+function mousePressed() {
+  let p = createVector(mouseX, mouseY);
+  positions.push(p);
+}

@@ -1,0 +1,12 @@
+let array = [];
+
+function setup() {
+  array[0] = 10;	// 배열요소 추가
+  array[5] = 100;	// 배열요소 추가
+  print(array);
+  print(array.length);	// 배열크기: 6
+
+  for (let i = 0; i < array.length; i++) {
+    print(array[i]);
+  }
+}

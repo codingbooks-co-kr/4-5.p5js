@@ -1,0 +1,10 @@
+// 기본형: 데이터값 복사
+
+function setup() {
+  let str1 = 'p5.js';		// 변수 초기화
+  let str2 = str1;		// 데이터값 복사
+  str1 = 'processing';		// 데이터값 재할당(=값 변경 불가능)
+
+  print(str1, str2);		// 두 변수의 값이 다름
+  print(str1 === str2);	// false
+}

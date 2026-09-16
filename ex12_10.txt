@@ -1,0 +1,27 @@
+// 마우스를 움직이면 원이 따라오고 드래그하면 사각형이 따라옴
+
+let check = false;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  if (check) {
+    fill(255, 0, 0);
+    ellipse(mouseX, mouseY, 30, 30);
+  } else {
+    fill(0, 255, 0);
+    rectMode(CENTER);
+    rect(mouseX, mouseY, 30, 30);
+  }
+}
+
+function mouseMoved() {
+  check = true;
+}
+
+function mouseDragged() {
+  check = false;
+}

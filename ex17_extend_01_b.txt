@@ -1,0 +1,4 @@
+function setup() {
+  print("Hello!".length);
+  print("안녕!".length);
+}

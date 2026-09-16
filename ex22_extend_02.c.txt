@@ -1,0 +1,30 @@
+// 콜백함수 사용
+
+let inp, slider;
+let name = 'Kim', age = 24;
+
+function setup() {
+  noCanvas();
+  createP('Your Name');	
+  inp = createInput('Kim');
+  // 텍스트 입력 시 콜백함수 호출
+  inp.input(myInput);
+  
+  createP('Your Age');
+  // 슬라이더 범위(0∼100), 초깃값(24)
+  slider = createSlider(0, 100, 24);
+  // 슬라이더 변경 시 콜백함수 호출
+  slider.changed(sliderChanged);
+}
+
+function draw() {
+  print(name, age);
+}
+
+function myInput() {	    	// 콜백함수
+  name = inp.value();
+}
+
+function sliderChanged() {  	// 콜백함수
+  age = slider.value();
+}

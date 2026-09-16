@@ -1,0 +1,35 @@
+// "생성자 함수" 기반 객체 생성
+// 원 객체 좌우 반사
+
+let c;
+
+function setup() {
+  createCanvas(300, 300);
+  c = new Circle(); 		// 객체 생성
+}
+
+function draw() {
+  background(0);
+  c.display(); 		// 메소드 호출
+  c.move(); 		// 메소드 호출
+}
+
+function Circle() {		// 생성자 함수
+  this.c = 255;		// 속성
+  this.x = width / 2;
+  this.y = height / 2;
+  this.d = 30;
+  this.velocity = 1;
+
+  this.display = function () {	// 메소드
+    fill(this.c, 255, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  };
+
+  this.move = function () {	// 메소드
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  };
+}

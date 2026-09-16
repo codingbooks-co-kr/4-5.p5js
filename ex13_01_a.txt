@@ -1,0 +1,28 @@
+// 원 좌우 반사 (함수 미사용)
+
+let c, x, y, d, velocity;
+
+function setup() {
+  createCanvas(300, 300);
+
+  // 전역변수 초기화
+  c = 255;
+  x = width/2;
+  y = height/2;
+  d = 30;
+  velocity = 1;
+}
+
+function draw() {
+  background(0);
+
+  // 원 그리는 동작
+  fill(c, 255, 0);
+  ellipse(x, y, d, d);
+
+  // 원 이동, 반사하는 동작
+  x += velocity;
+  if (x < 0 || x > width) {
+    velocity *= -1;
+  }
+}

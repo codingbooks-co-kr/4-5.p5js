@@ -1,0 +1,12 @@
+// new 연산자의 사용 유무에 따른 차이
+
+function setup() {
+  let str = "10"; 		// ❶ 문자열 "10"으로 초기화
+  print(str, typeof(str));	// 기본형(string)
+
+  str = String(10); 		// ❷ 숫자(10)를 문자열("10")로 형변환
+  print(str, typeof(str));	// 기본형(string)
+
+  str = new String(10); 	// ❸ 숫자를 문자열로 형변환한 후 객체 생성
+  print(str, typeof(str));	// 객체형(object)
+}

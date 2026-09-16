@@ -1,0 +1,15 @@
+// 값과 참조에 의한 호출
+
+function setup() {
+  let num = 255;
+  let array = [255, 0, 0];
+  print(num, array[0]);
+
+  change(num, array);
+  print(num, array[0]);
+}
+
+function change(value, reference) {
+  value = 0;
+  reference[0] = 0;
+}

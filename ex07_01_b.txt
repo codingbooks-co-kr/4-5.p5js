@@ -1,0 +1,14 @@
+// 다섯 개의 평행선2 (for문 미사용)
+
+let y = 50;
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {
+  stroke(255);
+  line(0, y, width, y);
+  y += 50;
+}

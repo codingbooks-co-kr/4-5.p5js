@@ -1,0 +1,60 @@
+// 본문 코드: 원과 사각형 좌우 반사
+// 상속 적용 (미완성)
+
+let c;
+let s;
+
+function setup() {
+  createCanvas(300, 300);
+  c = new Circle();
+  s = new Square();
+}
+
+function draw() {
+  background(0);
+  c.display();
+  c.move();	
+  s.display();
+  s.move();	
+}
+
+// 클래스 코드
+
+class Shape {
+  constructor() {
+    this.c = 255;
+    this.x = width/2;
+    this.y = height/2;
+    this.d = 30;
+    this.velocity = 1;
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}
+
+class Circle extends Shape {
+  constructor() {
+    super();	
+  }
+
+  display() {
+    fill(this.c, 0, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+}
+
+class Square extends Shape {
+  constructor() {
+    super();	
+  }
+
+  display() {
+    fill(0, this.c, 0);
+    rect(this.x, this.y, this.d, this.d);
+  }
+}

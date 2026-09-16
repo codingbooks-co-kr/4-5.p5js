@@ -1,0 +1,22 @@
+// 슬라이더를 좌우로 움직이면 설정된 값의 범위(0∼255)에 따라 원의 색상 변경
+
+let slider;
+
+function setup() {
+  createCanvas(500, 500);
+  slider = createSlider(0, 255, 100);
+  slider.position(10, 40);
+  slider.size(200);
+}
+
+function draw() {
+  background(200);
+  fill(0);
+  textSize(20);
+  text("Change circle color!", 10, 30);
+
+  let value = slider.value();
+  let c = color(0, value, 0);
+  fill(c);
+  ellipse(width/2, height/2, 300, 300);
+}

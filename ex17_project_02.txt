@@ -1,0 +1,64 @@
+// 좌우 반사하는 팩맨 만들기. Rectangle 클래스를 사용하여 개폐 각도 수정
+
+let r = [];
+let x = 0, degree = 0, maxDegree = 40, velocity = 1;
+
+function setup() { 
+  createCanvas(500, 500);
+  for (let i = 0; i < 5; i++) { 
+    r[i] = new Rectangle(75*(i+1), 100, 50, 50);
+  }
+} 
+
+function draw() { 
+  background(0);
+  for (let i = 0; i < r.length; i++) {
+    if (r[i].contains(mouseX, mouseY)) {
+      fill(255, 0, 0);
+      maxDegree = 30 * i + 10;
+    } else {
+      fill(255, 255, 0);
+    }
+    r[i].display();
+  }
+
+  fill(255);
+  if (velocity > 0) {
+    arc(x, height/2, 150, 150, radians(degree), radians(360-degree));
+  } 
+  if (velocity < 0) {
+    arc(x, height/2, 150, 150, radians(180+degree), radians(3*180-degree));
+  }
+
+  x += velocity;
+  degree++;
+  if (x < 0 || x > width) {
+    velocity *= -1;
+  }
+  if (degree >= maxDegree) {
+    degree = 0;
+  }
+}
+
+// Rectangle 클래스
+
+class Rectangle {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  display() {
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  contains(x, y) {
+    if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

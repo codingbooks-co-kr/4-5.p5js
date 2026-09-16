@@ -1,0 +1,15 @@
+// 랜덤한 위치에 원 문양 그리기
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  let x = random(width);
+  let y = random(height);
+  for (let i = 100; i > 0; i -= 20) {
+    fill(random(255), random(255), random(255));
+    ellipse(x, y, i, i);
+  }
+}

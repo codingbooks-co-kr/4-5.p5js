@@ -1,0 +1,26 @@
+// ❷ 유형2: 오른쪽 이동하는 숫자 배열
+
+let num = 10;
+let x = [], y = [];
+
+function setup() {
+  createCanvas(500, 300);
+  for (let i = 0; i < num; i++) {
+    x[i] = random(-300, 0);
+    y[i] = random(0, height);
+  }
+}
+
+function draw() {
+  background(0);
+  move(x, y);		// 유형2
+}
+
+function move(xx, yy) {
+  for (let i = 0; i < num; i++) {
+    fill(255);
+    textSize(30);
+    text(i, xx[i], yy[i]);
+    xx[i]++;
+  }
+}

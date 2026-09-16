@@ -1,0 +1,6 @@
+function setup() {
+  createCanvas(200, 200);
+  background(200);
+  let link = createA("http://p5js.org/", "Go to p5.js", "_blank");
+  link.position(50, 80);
+}

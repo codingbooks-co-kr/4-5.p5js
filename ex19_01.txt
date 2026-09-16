@@ -1,0 +1,29 @@
+// 마우스를 누를 때마다 원 요소가 하나씩 위치 이동
+
+let num = 5, count = 0;
+let x = [], y = [];
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < num; i++) {
+    x[i] = 0;
+    y[i] = 0;
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < num; i++) {
+    fill(255);
+    ellipse(x[i], y[i], 30, 30);
+  }
+}
+
+function mousePressed() {
+  x[count] = mouseX;
+  y[count] = mouseY;
+  count++;
+  if (count >= num) {
+    count = 0;
+  }
+}

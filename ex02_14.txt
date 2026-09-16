@@ -1,0 +1,12 @@
+// 원호 모드(PIE, OPEN, CHORD)를 사용하여 다양한 원호를 그리기
+
+function setup() {
+  createCanvas(500, 200);
+  background(200);
+
+  fill(255);
+  arc(100, 100, 80, 80, radians(40), radians(320));
+  arc(200, 100, 80, 80, radians(40), radians(320), PIE);
+  arc(300, 100, 80, 80, radians(40), radians(320), OPEN);
+  arc(400, 100, 80, 80, radians(40), radians(320), CHORD);
+}

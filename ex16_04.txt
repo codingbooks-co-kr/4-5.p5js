@@ -1,0 +1,70 @@
+// 원, 사각형 객체 배열 좌우 반사1 (다형성을 배열에 적용)
+// 본문 코드
+
+let sh = [];	
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < 12; i++) {
+    if (i < 6) {
+      sh[i] = new Circle(255, random(width), random(height), random(20, 50), random(-5, 5));
+    } else {
+      sh[i] = new Square(255, random(width), random(height), random(20, 50), random(-5, 5));
+    }
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < sh.length; i++) {
+    sh[i].display();
+      sh[i].move();
+  }
+}
+
+// 클래스 코드 
+
+class Shape {
+  constructor(c, x, y, d, velocity) {
+    this.c = c;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity = velocity;
+  }
+
+  display() {
+    fill(this.c, this.c, 0);
+    textSize(this.d);
+    text("Shape", this.x, this.y);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}
+
+class Circle extends Shape {
+  constructor(c, x, y, d, velocity) {
+    super(c, x, y, d, velocity);
+  }
+
+  display() {
+    fill(this.c, 0, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+}
+
+class Square extends Shape {
+  constructor(c, x, y, d, velocity) {
+    super(c, x, y, d, velocity);
+  }
+
+  display() {
+    fill(0, this.c, 0);
+    rect(this.x, this.y, this.d, this.d);
+  }
+}

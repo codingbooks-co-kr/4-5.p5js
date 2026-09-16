@@ -1,0 +1,43 @@
+function setup() {
+  let n1 = parseInt('10.5');	// 문자열('10.5') → 정수로 형변환
+  print(n1 + 2);			// 12
+  let n2 = parseFloat('10.5');	// 문자열('10.5') → 실수로 형변환
+  print(n2 + 2);			// 12.5
+  let n3 = Number('10.5');	// 문자열('10.5') → 숫자로 형변환
+  print(n3 + 2);			// 12
+  let n4 = Number(true);	// true → 1로 형변환
+  print(n4 + 2);			// 3
+  let n5 = Number(false);	// false → 0으로 형변환
+  print(n5 + 2);			// 2
+  
+  let s1 = String(10);		// 숫자(10)를 문자열로 형변환
+  print(s1 + 2);			// 102 (문자열 연결)
+  let s2 = String(true);		// 논리값(true)을 문자열로 형변환
+  print(s2 + 2);			// true2 (문자열 연결)
+  let s3 = String(false);	// 논리값(false)을 문자열로 형변환
+  print(s3 + 2);			// false2 (문자열 연결)
+  let s4 = (10).toString();	// 숫자(10)를 문자열로 형변환
+  print(s4 + 2);			// 102 (문자열 연결)
+  let s5 = (true).toString();	// 논리값(true)을 문자열로 형변환
+  print(s5 + 2);			// true2 (문자열 연결)
+  let s6 = (false).toString();	// 논리값(false)을 문자열로 형변환
+  print(s6 + 2);			// false2 (문자열 연결)
+  print("" + 2 + 3);		// 23 (문자열 연결)
+  
+  let b1 = Boolean(1);		// 0이 아닌 숫자 → true
+  print(b1);
+  let b2 = Boolean(10);	// 0이 아닌 숫자 → true
+  print(b2);
+  let b3 = Boolean('p5.js');	// 문자열 → true
+  print(b3);
+  let b4 = Boolean(0);		// 0 → false
+  print(b4);
+  let b5 = Boolean('');		// 빈문자열 → false
+  print(b5);
+  let b6 = Boolean(null);	// null → false
+  print(b6);
+  let b7 = Boolean(NaN);	// NaN → false
+  print(b7);
+  let b8 = Boolean(undefined);	// undefined → false
+  print(b8);
+}

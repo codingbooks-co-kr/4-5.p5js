@@ -1,0 +1,44 @@
+// 본문 코드: 원 객체 세 개 좌우 반사 (생성자 기본 매개변수)
+
+let c1, c2, c3;
+
+function setup() {
+  createCanvas(300, 300);
+  c1 = new Circle();
+  c2 = new Circle(200, 50, 100, 50);
+  c3 = new Circle(255, 100, 200, 70, 3);
+}
+
+function draw() {
+  background(0);
+  c1.display();
+  c1.move();
+  c2.display();
+  c2.move();
+  c3.display();
+  c3.move();
+}
+
+// 클래스 코드
+
+class Circle {
+  constructor(c=0, x=0, y=50, d=30, velocity=1) {
+    this.c = c;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity = velocity;
+  }
+
+  display() {
+    fill(this.c, 255, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}

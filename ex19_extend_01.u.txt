@@ -1,0 +1,10 @@
+let array = [10, 20, 30, 40];
+let reducer = function (acc, cur, index, array) {	// 콜백함수(익명함수 표현)
+  print(acc, cur, index, array);
+  return acc + cur;
+};
+
+function setup() {
+  result = array.reduce(reducer, 0);		// reducer는 콜백함수
+  print(result);
+}

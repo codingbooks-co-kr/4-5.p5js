@@ -1,0 +1,46 @@
+// "프로토타입" 기반 객체 생성
+// 원 객체 두 개 좌우 반사
+
+let c1, c2;
+
+function setup() {
+  createCanvas(300, 300);
+  c1 = new Circle(255, 150, 100, 30, 1);
+  c2 = new Circle(255, 150, 200, 60, -1);
+
+  // 각 메서드는 생성된 객체가 공유함
+  print(c1.display === c2.display);
+  print(c1.move === c2.move);
+}
+
+function draw() {
+  background(0);
+  c1.display(); 		// 메소드 호출
+  c1.move(); 		// 메소드 호출
+  c2.display(); 		// 메소드 호출
+  c2.move(); 		// 메소드 호출
+}
+
+// 생성자 함수
+function Circle(c, x, y, d, velocity) {
+  // 속성
+  this.c = c;
+  this.x = x;
+  this.y = y;
+  this.d = d;
+  this.velocity = velocity;
+}
+
+// 프로토타입 메소드
+Circle.prototype.display = function () {
+  fill(this.c, 255, 0);
+  ellipse(this.x, this.y, this.d, this.d);
+};
+
+// 프로토타입 메소드
+Circle.prototype.move = function () {
+  this.x += this.velocity;
+  if (this.x < 0 || this.x > width) {
+    this.velocity *= -1;
+  }
+};

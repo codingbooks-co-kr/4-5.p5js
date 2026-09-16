@@ -1,0 +1,16 @@
+// noise() 함수를 사용하여 원을 상하좌우로 랜덤하게 움직이기
+
+let x, y, tx = 0.0, ty = 0.5;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  x = noise(tx) * width;
+  y = noise(ty) * height;
+  ellipse(x, y, 30, 30);
+  tx += 0.01;
+  ty += 0.01;
+}

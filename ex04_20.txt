@@ -1,0 +1,10 @@
+// 마우스의 움직임에 따라 원의 크기 변경
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  ellipse(width/2, height/2, mouseX, mouseY);
+}

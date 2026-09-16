@@ -1,0 +1,102 @@
+// 본문 코드: 마우스가 원 안에 들어가면 원형 링 생성  및 증가, 사각형 안에 들어가면 사각형 링 생성 및 증가
+
+let c, s;
+
+function setup() {
+  createCanvas(500, 500);
+  c = new Circle(false, color(255, 255, 0), width/2, 200, 50, 1);
+  s = new Square(false, color(255, 255, 0), width/2, 300, 50, 1);
+}
+
+function draw() {
+  background(0);
+  c.display();
+  c.move();
+  c.check(mouseX, mouseY);
+  s.display();
+  s.move();
+  s.check(mouseX, mouseY);
+}
+
+// 클래스 코드
+
+class Shape {				// 상위 클래스
+  constructor(on, c, x, y, d, dd) {	// 상위 생성자
+    this.on = false;
+    this.c = color(255, 255, 0);
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.dd = 1;
+  }
+
+  display() {				// 상위 메소드
+    fill(this.c);
+    textSize(50);
+    text("Shape", this.x, this.y);
+  }
+
+  move() {				// 상위 메소드
+    if (this.on) {
+      this.dd++;
+    }
+  }
+}
+
+class Circle extends Shape {		// 하위 클래스(Circle): 상위 클래스(Shape) 상속
+  constructor(on, c, x, y, d, dd) {	// 하위 생성자
+    super(on, c, x, y, d, dd);
+  }
+
+  display() {				// 상위 메소드 오버라이딩
+    fill(this.c);
+    ellipse(this.x, this.y, this.d, this.d);
+    if (this.on) {
+      noFill();
+      stroke(255, 255, 0);
+      strokeWeight(3);
+      ellipse(this.x, this.y, this.dd, this.dd);
+    }
+  }
+
+  check(xx, yy) {			// 하위 메소드
+    let distance = dist(this.x, this.y, xx, yy);
+    if (distance < this.d/2) {
+      this.on = true;
+      this.c = color(255, 0, 0);
+    } else {
+      this.on = false;
+      this.c = color(255, 255, 0);
+      this.dd = 1;
+    }
+  }
+}
+
+class Square extends Shape {		// 하위 클래스(Square): 상위 클래스(Shape) 상속
+  constructor(on, c, x, y, d, dd) {	// 하위 생성자
+    super(on, c, x, y, d, dd);
+  }
+
+  display() {				// 상위 메소드 오버라이딩
+    fill(this.c);
+    rectMode(CENTER);
+    rect(this.x, this.y, this.d, this.d);
+    if (this.on) {
+      noFill();
+      stroke(255, 255, 0);
+      strokeWeight(3);
+      rect(this.x, this.y, this.dd, this.dd);
+    }
+  }
+
+  check(xx, yy) {			// 하위 메소드
+    if ((this.x-this.d/2 < xx) && (this.x+this.d/2 > xx) && (this.y-this.d/2 < yy) && (this.y+this.d/2 > yy)) {
+      this.on = true;
+      this.c = color(255, 0, 0);
+    } else {
+      this.on = false;
+      this.c = color(255, 255, 0);
+      this.dd = 1;
+    }
+  }
+}

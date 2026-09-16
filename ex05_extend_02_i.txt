@@ -1,0 +1,17 @@
+// ❸ 컴파일 오류
+
+let x = 0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  ellipse(x, height/2, 30, 30);
+  x += velocity;  // 오류!
+  if(x > width) {
+    let velocity = 1;
+    velocity *= -1;
+  }
+}

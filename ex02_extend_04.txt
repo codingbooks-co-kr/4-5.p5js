@@ -1,0 +1,8 @@
+// degrees() 또는 radians() 함수 사용 예
+
+function setup() {
+  let deg = degrees(PI);
+  print(PI + ' radian = ' + deg + ' degree');
+  let rad = radians(180.0);
+  print(180 + ' degree = ' + rad + ' radian');
+}

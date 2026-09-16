@@ -1,0 +1,7 @@
+function setup() {
+  let str = "Hello!";
+  print(str.charAt(4));		// 문자열 중 4번째 문자(“o”)를 반환
+  for (let i = 0; i < str.length; i++) {
+    print(str.charAt(i));		// 반복문으로 각 문자를 반환
+  }
+}

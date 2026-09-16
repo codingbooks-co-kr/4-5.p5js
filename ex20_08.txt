@@ -1,0 +1,23 @@
+// 배열에 저장된 이미지 객체가 1초마다 순서대로 출력
+
+let imgs = [];
+let num = 0;
+
+function preload() {
+  // 배열에 이미지 객체를 일괄 저장
+  let filenames = ["nature0.jpg", "nature1.jpg", "nature2.jpg"];
+  for (let i = 0; i < filenames.length; i++) {
+    imgs[i] = loadImage(filenames[i]);
+  }
+}
+
+function setup() {
+  createCanvas(500, 300);
+  frameRate(1);
+}
+
+function draw() {
+  num %= imgs.length;
+  image(imgs[num], 0, 0, width, height);
+  num++;
+}

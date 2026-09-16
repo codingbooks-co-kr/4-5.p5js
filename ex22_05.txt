@@ -1,0 +1,61 @@
+// 마우스휠을 상하로 돌려 두 개의 노브값(0∼360)과 사각형 색상(0∼255) 변경
+
+let knob;
+let x = 150, y = 250, size = 150, angle = 100, rectColor = 0;
+
+function setup() {
+  createCanvas(500, 500);
+  knob = new Knob(x, y, size, color(255, 0, 0));
+}
+
+function draw() {
+  background(0);
+  knob.display(angle);
+  rectColor = map(angle, 0, 360, 0, 255);
+  
+  stroke(255);
+  fill(rectColor);
+  rectMode(CENTER);
+  rect(x+200, y, size, size);
+}
+
+// 마우스휠 이벤트 함수: 원 안에서 마우스휠을 돌릴 때만 각도(angle) 변경
+function mouseWheel(event) {
+  let distance = dist(x, y, mouseX, mouseY);
+  if (distance < size/2) {
+    if (event.delta > 0) {
+      angle += 10;
+    } else {
+      angle -= 10;
+    }
+    angle = constrain(angle, 0, 360);
+  }
+}
+
+// Knob 클래스
+
+class Knob {
+  constructor(x, y, size, c) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.color = c;
+  }
+
+  display(angle) {			// 노브 휠 구현 및 값 표시
+    noStroke();
+    fill(200);			// 큰 원
+    ellipse(this.x, this.y, this.size, this.size);
+
+    fill(this.color);			// 노브 원호
+    arc(this.x, this.y, this.size, this.size, 0, radians(angle));
+
+    fill(255);			// 작은 원
+    ellipse(this.x, this.y, this.size/2, this.size/2);
+
+    fill(0);				// 노브값 표시
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text(angle, this.x, this.y);
+  }
+}

@@ -1,0 +1,26 @@
+// 원 배열 요소 10개를 랜덤하게 생성하여 대각선 방향으로 이동
+
+let num = 10;
+let x = [], y = [];
+
+function setup() {
+  createCanvas(500, 500);
+  for (let i = 0; i < num; i++) {
+    x[i] = random(-300, 0);
+    y[i] = random(-300, 0);
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < num; i++) {
+    display(x[i], y[i]);
+    x[i]++;
+    y[i]++;
+  }
+}
+
+function display(x, y) {
+  fill(255);
+  ellipse(x, y, 30, 30);
+}

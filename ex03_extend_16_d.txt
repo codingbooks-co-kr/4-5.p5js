@@ -1,0 +1,17 @@
+// ❹ 크기 증가
+
+// 전역변수
+let d = 0;
+
+function setup() {
+  createCanvas(300, 300);
+  background(200);
+}
+
+function draw() {
+  // 지역변수
+  let x = 150;
+  let y = 150;
+  ellipse(x, y, d, d);
+  d++;
+}

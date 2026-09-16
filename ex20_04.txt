@@ -1,0 +1,17 @@
+// 이미지 객체를 생성 후 마우스를 따라 움직이기
+
+let img;
+
+function preload() {
+  img = loadImage("flower.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  imageMode(CENTER);
+  image(img, mouseX, mouseY);
+}

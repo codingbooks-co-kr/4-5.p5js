@@ -1,0 +1,19 @@
+let array = [[10, 20], [30, 40], [50, 60]]
+
+function setup() {
+  // ❶ 익명함수 표현
+  result = array.reduce(function (acc, cur) {
+    return acc.concat(cur);
+  }, []);
+  print(result);
+
+  // ❷ 화살표함수 표현
+  result = array.reduce((acc, cur) => {
+    return acc.concat(cur);
+  }, []);
+  print(result);
+
+  // ❸ 명령문이 하나일 때 간소화된 화살표함수 표현
+  result = array.reduce((acc, cur) => acc.concat(cur), []);
+  print(result);
+}

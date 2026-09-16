@@ -1,0 +1,33 @@
+// 사운드 샘플들을 연결하여 파형 그리기
+
+let audio, amp;
+let samples = [];
+
+function preload() {
+  audio = loadSound("hometown.mp3");
+}
+
+function setup() {
+  createCanvas(500, 100);
+  amp = new p5.Amplitude();
+  audio.play();
+  for (let i = 0; i < width; i++) {	
+    samples[i] = height-10;
+  }
+}
+
+function draw() {
+  background(0);
+  let level = amp.getLevel();
+  level = map(level, 0, 1, height-10, 0);
+
+  for (let i = 0; i < width-1; i++) {
+    samples[i] = samples[i+1];
+  }
+  samples[width-1] = level;
+  
+  stroke(255);
+  for (let i = 0; i < width-1; i++) {
+    line(i, samples[i], i+1, samples[i+1]);
+  }
+}

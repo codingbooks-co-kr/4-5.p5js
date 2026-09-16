@@ -1,0 +1,15 @@
+// for문: 평행선 그리기
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {
+  let y = 50;		// 초기식
+  for (; y < height;) {		// 조건식
+    stroke(255);
+    line(0, y, width, y);
+    y += 50;		// 증감식
+  }
+}

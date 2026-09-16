@@ -1,0 +1,22 @@
+// 변수를 사용하여 자전거 그리기
+
+let x = 300, y = 200, c = 0, d = 100;
+
+function setup() {
+  createCanvas(700, 400);
+}
+
+function draw() {
+  background(0);
+
+  stroke(255, 255, 0);
+  strokeWeight(5);
+  line(0, y+d/2, 700, y+d/2);
+
+  fill(c, 0, 0);
+  ellipse(x, y, d, d);
+  ellipse(x+d, y, d, d);
+
+  noFill();
+  triangle(x, y, x+d/2, y-d, x+d, y);
+}

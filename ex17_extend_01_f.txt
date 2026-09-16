@@ -1,0 +1,6 @@
+function setup() {
+  let str = "Hello p5.js!";
+  print(str.endsWith("!"));	// str이 "!"로 끝나므로 true 반환
+  print(str.endsWith("js!"));	// str이 "js!"로 끝나므로 true 반환
+  print(str.endsWith("H"));	// str이 "H"로 끝나지 않으므로 false
+}

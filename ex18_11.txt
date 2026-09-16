@@ -1,0 +1,25 @@
+// 탄성 (p5.Vector 클래스 미사용)
+
+let x = 250, y = 0;		// 위치
+let velocity  = 0;		// 속도
+let accel = 0;		// 가속도
+let f;            		// 스프링의 탄성력
+let k = 0.1;		// 스프링 상수
+let m = 1.0;		// 질량
+let damping = 0.9;		// 댐핑 상수
+
+function setup() { 
+  createCanvas(500, 500);
+} 
+
+function draw() { 
+  background(0); 
+  f = k * (mouseY - y);
+  accel = f / m;
+  velocity  = damping * (velocity + accel);
+  y += velocity;
+
+  stroke(255);
+  line(width/2, 0, width/2, y);
+  ellipse(x, y, 30*m, 30*m);
+}

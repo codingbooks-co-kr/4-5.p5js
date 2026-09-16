@@ -1,0 +1,9 @@
+function setup() {
+  show(10);
+  show(10, 20);
+  show(10, 20, 30);
+}
+
+function show(arg1, arg2 = 100, arg3 = 200) {
+  print(arg1, arg2, arg3);
+}

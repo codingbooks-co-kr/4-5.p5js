@@ -1,0 +1,31 @@
+// 매개변수가 없는 콜백함수
+
+let r = 100.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  // ❶익명함수를 매개변수로 직접 전달
+  show(function () {
+    let x = width / 2;
+    let y = height / 2;
+    let d = dist(x, y, mouseX, mouseY);
+    fill(d, d, 255);
+    ellipse(x, y, r * 2, r * 2);
+    print(d);
+  });
+}
+
+// 콜백함수(유형2)
+// ❷매개변수 d는 콜백함수를 전달받음
+function show(d) {
+  fill(255);
+  textSize(20);
+  text("콜백함수", 10, 30);
+
+  // ❸콜백함수 호출
+  d();
+}

@@ -1,0 +1,16 @@
+// 두 개의 원이 상하 및 좌우 진동
+
+let theta = 0.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  let x = width/2 + width/2 * cos(theta);
+  let y = height/2 + height/2 * sin(theta);
+  ellipse(x, height/2, 30, 30);
+  ellipse(width/2, y, 30, 30);
+  theta += 0.1;
+}

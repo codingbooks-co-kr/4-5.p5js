@@ -1,0 +1,17 @@
+// print() 함수의 출력 예
+
+let n1 = 12;
+let n2 = 12.345;
+let s1 = 'A';
+let s2 = 'p5.js';
+let b1 = true;
+let b2 = false;
+
+function setup() {  
+  print(n1);
+  print(n2);
+  print(s1);
+  print(s2);
+  print(b1);
+  print(b2);
+}

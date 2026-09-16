@@ -1,0 +1,11 @@
+function setup() {
+  let array = [];
+  let result = array.push(10); 	// 0번째 배열 요소에 10 추가
+  result = array.push(20); 	// 1번째 배열 요소에 20 추가
+  result = array.push(30); 	// 배열 끝에 요소(30) 추가
+  print(result, array);
+
+  array = [1, 2, 3];
+  result = array.unshift(5); 	// 배열 맨 앞에 요소 추가
+  print(result, array);
+}

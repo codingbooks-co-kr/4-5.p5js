@@ -1,0 +1,39 @@
+// 마우스로 원을 끌어 놓기 (p5.Vector 클래스 사용)
+
+let choice = false;
+let position, r = 30;
+
+function setup() {
+  createCanvas(500, 500);
+  position = createVector(width/2, height/2);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  fill(255, 255, 0);
+  ellipse(position.x, position.y, r*2, r*2);
+}
+
+function mousePressed() {
+  let d = dist(mouseX, mouseY, position.x, position.y);
+  if (d < r) {
+    choice = true;
+  }
+}
+
+function mouseDragged() { 
+  if (choice) {
+    let mouse = createVector(mouseX, mouseY);
+    let pmouse = createVector(pmouseX, pmouseY);
+    let offset = p5.Vector.sub(mouse, pmouse);
+    position.add(offset);
+  }
+}
+
+function mouseReleased() { 
+  choice = false;
+}

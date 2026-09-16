@@ -1,0 +1,13 @@
+function setup() {
+  // 문자('A') → 유니코드값 출력
+  let code = 'A'.charCodeAt(0);
+  print(code);
+
+  // 유니코드값(65) → 문자 출력
+  let letter1 = String.fromCharCode(65);
+  print(letter1);
+
+  // 유니코드값(65) → 문자 출력
+  let letter2 = char(65);
+  print(letter2);
+}

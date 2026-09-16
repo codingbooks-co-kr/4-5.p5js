@@ -1,0 +1,20 @@
+// 상하좌우 반사하는 원
+
+let x = 0.0, y = 0.0, velocity_x = 4.0, velocity_y = 3.0;
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {
+  ellipse(x, y, 30, 30);
+  x += velocity_x;
+  y += velocity_y;
+  if (x < 0 || x > width) {
+    velocity_x *= -1;
+  }
+  if (y < 0 || y > height) {
+    velocity_y *= -1;
+  }
+}

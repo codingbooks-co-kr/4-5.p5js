@@ -1,0 +1,18 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+  // ❶ 콜백함수의 인수는 (요소, [인덱스], [배열])
+  let result = array.filter(function (value, index, array) {
+    return value >= 30;
+  });
+  print(result);
+
+  // ❷ 콜백함수의 인수 중 (인덱스, 배열)은 생략 가능
+  result = array.filter(function (value) {
+    return value >= 30;
+  });
+  print(result);
+
+  // ❸ 콜백함수를 화살표함수로 변경
+  result = array.filter(value =>  value >= 30);
+  print(result);
+}

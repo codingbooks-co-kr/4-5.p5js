@@ -1,0 +1,23 @@
+// 특정 문자키로 원을 상하좌우로 이동
+
+let x = 150, y = 150;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  if (keyIsPressed) {
+    if (key === 'q') {
+      x--;
+    } else if (key === 'w') {
+      x++;
+    } else if (key === 'e') {
+      y--;
+    } else if (key === 'r') {
+      y++;
+    }
+  }
+  ellipse(x, y, 100, 100);
+}

@@ -1,0 +1,85 @@
+// 본문 코드: 마우스를 움직이면 원이 생성되어 낙하, 사각형에 들어가면 크기 감소 및 소멸
+
+let circles = [];
+let r;
+
+function setup() {
+  createCanvas(500, 500);
+  r = new Rectangle(0, 400, width, 40);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  r.display();
+
+  for (let i = 0; i < circles.length; i++) {
+    let c = circles[i];
+    c.display();
+    c.move();
+    if (c.position.y > height) {
+      circles.splice(i, 1);
+    }
+    if (r.contains(c.position.x, c.position.y)) {
+      c.melt();
+    }
+  }
+}
+
+function mouseMoved() {
+  let c = new Circle(mouseX, mouseY);
+  circles.push(c);
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-5, 5), random(-10, -5));
+    this.accel = createVector(0, 0.3);
+    this.col = color(random(255), random(255), random(255));
+    this.d = 30;
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.velocity.add(this.accel);
+    this.position.add(this.velocity);
+  }
+
+  melt() {
+    this.velocity = createVector(0, 0);
+    this.d -= 0.2;
+    if (this.d < 0) {
+      this.d = 0;
+    }
+  }
+}
+
+// Rectangle 클래스
+
+class Rectangle {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  display() {
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  contains(x, y) {
+    if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

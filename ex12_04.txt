@@ -1,0 +1,20 @@
+// 마우스를 누른 좌표를 기점으로 마우스가 움직이는 위치까지 방사형의 선 생성
+
+let x = 0, y = 0;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    stroke(random(255), random(255), random(255));
+    line(x, y, mouseX, mouseY);
+  }
+}
+
+function mousePressed() {
+  x = mouseX;
+  y = mouseY;
+}

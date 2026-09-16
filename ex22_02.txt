@@ -1,0 +1,29 @@
+// 버튼을 두 개 생성하고 각 버튼을 누를 때 배경색이 변경
+
+let c, button;
+
+function setup() {
+  createCanvas(400, 400);
+  button = createButton("buttonA");
+  button.position(50, 50);
+  button.size(300, 100);
+  button.mousePressed(buttonA);
+
+  button = createButton("buttonB");
+  button.position(50, 170);
+  button.size(300, 100);
+  button.mousePressed(buttonB);
+  c = color(100);
+}
+
+function draw() {
+  background(c);
+}
+
+function buttonA() {
+  c = color(255, 0, 0);
+}
+
+function buttonB() {
+  c = color(0, 255, 0);
+}

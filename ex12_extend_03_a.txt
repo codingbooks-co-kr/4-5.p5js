@@ -1,0 +1,12 @@
+// 값에 의한 호출(Call by Value)
+
+function setup() {
+  createCanvas(300, 300);
+  let value = display(255);
+  print(value, typeof value);
+}
+
+function display(x) {
+  background(x, 0, 0);
+  return x;
+}

@@ -1,0 +1,6 @@
+function setup() {
+  let str = "Hello p5.js!";
+  print(str.indexOf("l"));		// str에서 "l"의 첫 번째 인덱스를 반환
+  print(str.indexOf("lo"));	// str에서 "lo"의 첫 번째 인덱스를 반환
+  print(str.indexOf("a"));		// str에서 "a"가 없으면 –1을 반환
+}

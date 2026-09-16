@@ -1,0 +1,50 @@
+// 세 개의 사각형 중 하나를 마우스로 선택하면 원의 크기가 변경
+
+let r = [];
+let size = 100;
+
+function setup() { 
+  createCanvas(500, 500);
+  for (let i = 0; i < 3; i++) {
+    r[i] = new Rectangle(110*(i+1), 100, 50, 50);
+  }
+} 
+
+function draw() { 
+  background(0);
+  fill(0, 0, 255);
+  ellipse(width/2, height/2, size, size);
+
+  for (let i = 0; i < r.length; i++) {
+    if (r[i].contains(mouseX, mouseY)) {
+      fill(255, 0, 0);
+      size = 200 * (i + 1);
+    } else {
+      fill(255, 255, 0);
+    }
+    r[i].display();
+  }
+}
+
+// Rectangle 클래스
+
+class Rectangle {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  display() {
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  contains(x, y) {
+    if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

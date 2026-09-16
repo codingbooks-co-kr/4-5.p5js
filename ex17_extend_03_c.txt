@@ -1,0 +1,7 @@
+// 배열 리터럴 기반 객체 생성
+let circle = [255, 50, 50, 30, 1];
+
+function setup() {
+  print(circle);
+  print(typeof circle);
+}

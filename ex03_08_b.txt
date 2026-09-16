@@ -1,0 +1,23 @@
+// 덧셈 연산자인 ‘+’를 사용하여 문자열 연결
+
+let n1 = 12;
+let n2 = 12.345;
+let s1 = "A";
+let s2 = "p5.js";
+let b1 = true;
+let b2 = false;
+
+function setup() {
+  print("n1 = " + n1);
+  print("n2 = " + n2);
+  print("s1 = " + s1);
+  print("s2 = " + s2);
+  print("b1 = " + b1);
+  print("b2 = " + b2);
+  print(n1 + n2);
+  print(n1 + n2 + " = Sum");
+  print("Sum = " + n1 + n2);
+  print("Hello " + "p5.js");
+  print("" + b1);
+  print("" + b1 + b2);	
+}

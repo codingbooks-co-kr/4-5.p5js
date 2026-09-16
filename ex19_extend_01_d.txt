@@ -1,0 +1,13 @@
+let position = [];				// ❶ 대괄호 사용 방식
+function setup() {
+  createCanvas(300, 300);
+  for (let i = 0; i < 10; i++) {			// 배열의 크기를 명시하여야 함
+    position[i] = createVector(random(width), random(height));
+  }
+}
+function draw() {
+  background(0);
+  for (let i = 0; i < position.length; i++) {		// length 사용 가능
+    ellipse(position[i].x, position[i].y, 30, 30);
+  }
+}

@@ -1,0 +1,7 @@
+// 문자열 및 배열을 요소로 분리
+
+function setup() {
+  print(..."Kim");
+  print(...["Kim", "Lee"]);
+  print(...["Kim", "Lee", "Park"]);
+}

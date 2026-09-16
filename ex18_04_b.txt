@@ -1,0 +1,19 @@
+// 원의 진동 (p5.Vector 클래스 사용)
+
+let position, theta = 0.0;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  position = createVector(0, 0);
+}
+
+function draw() {
+  position.x = width/2 + width/2 * cos(theta);
+  position.y = height/2 + height/2 * sin(theta);
+  fill(255, 0, 0);
+  ellipse(position.x, height/2, 30, 30);
+  fill(0, 255, 0);
+  ellipse(width/2, position.y, 30, 30);
+  theta += 0.05;
+}

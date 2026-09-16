@@ -1,0 +1,17 @@
+// 작은 원으로 사인 파형을 만들고 주기는 마우스의 좌우 움직임으로 조절
+
+let y = [];
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  for (let x = 0; x < width; x++) { 
+    let theta = map(x, 0, mouseX, 0, TWO_PI);
+    y[x] = height/2 + 100.0 * sin(theta);
+    stroke(255);
+    ellipse(x, y[x], 5, 5);
+  }
+}

@@ -1,0 +1,19 @@
+// 콜백함수에 의한 동기적 처리1
+
+function setup() {
+  // start는 콜백함수
+  begin(start);			// ❶ 
+  print('Two');			// ❼
+  print('Three');			// ❽
+}
+
+function begin(startFirst){		// ❷
+  print('시작합니다!');		// ❸
+  // 콜백함수 호출
+  startFirst();			// ❹
+}
+
+// 콜백함수(선언함수를 사용)
+function start() {			// ❺
+  print('One');			// ❻
+}

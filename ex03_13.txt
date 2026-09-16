@@ -1,0 +1,17 @@
+// 문자를 대각선(좌하단에서 우상단) 방향으로 이동
+
+let c = 'A';
+let x = 0, y = 300;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  textSize(50);
+  text(c, x, y);
+  x++;
+  y--;
+}

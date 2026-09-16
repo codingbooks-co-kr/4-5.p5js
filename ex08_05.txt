@@ -1,0 +1,16 @@
+// 작은 원들로 큰 원 궤적 만들기
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  let angle = map(mouseX, 0, width, 0, 360);
+  for (let degree = 0; degree < angle; degree += 5) {
+    let theta = radians(degree);
+    let x = width/2 + 100.0 * cos(theta);
+    let y = height/2 + 100.0 * sin(theta);
+    ellipse(x, y, 10, 10);
+  }
+}

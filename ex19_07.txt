@@ -1,0 +1,59 @@
+// 본문 코드: 마우스를 누르면 원 객체가 생성되고 서서히 소멸
+
+let circles = [];
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < circles.length; i++) {
+    let c = circles[i];
+    c.display();
+    c.move();
+    if (c.melt()) {
+      circles.splice(i, 1);
+    }
+  }
+  print(circles.length);
+}
+
+function mousePressed() {
+  let c = new Circle(mouseX, mouseY);
+  circles.push(c);
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.col = color(random(255), random(255), random(255));
+    this.d = 30;
+    this.alpha = 255;
+  }
+
+  display() {
+    stroke(this.col, this.alpha);
+    fill(this.col, this.alpha);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.position.add(random(-2, 2), random(-2, 2));
+  }
+
+  melt() {
+    this.alpha--;
+    if (this.alpha < 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

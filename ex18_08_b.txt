@@ -1,0 +1,30 @@
+// 낙하, 반사하는 원 (p5.Vector 클래스 사용)
+
+let position;
+let velocity;
+let accel;
+let friction = 0.95;
+
+function setup() {
+  createCanvas(500, 500);
+  position = createVector(250, 0);
+  velocity = createVector(0, 0);
+  accel = createVector(0.0, 0.3);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  fill(255);
+  ellipse(position.x, position.y, 30, 30);
+  velocity.add(accel);
+  position.add(velocity);
+  if (position.y > height) {
+    position.y = height;
+    velocity.y *= -1;
+    velocity.mult(friction);
+  }
+}

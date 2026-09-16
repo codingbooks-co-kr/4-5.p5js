@@ -1,0 +1,24 @@
+// 마우스 좌우 위치에 따라 원과 사각형 변경
+
+let x = 100, y = 100;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  display(150);
+}
+
+function display(x) {
+  let y = 150;
+  if (mouseX < y) {
+    let d = 200;
+    ellipse(x, y, d, d);
+  } else {
+    let d = 200;
+    rectMode(CENTER);
+    rect(x, y, d, d);
+  }
+}

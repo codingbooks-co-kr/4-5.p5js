@@ -1,0 +1,9 @@
+// ❷ 빈 배열에 요소 추가
+
+function setup() {
+  let array = [];
+  array.push(10);
+  array.push(20);
+  array.push(30);
+  print(array);
+}

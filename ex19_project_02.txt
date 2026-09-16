@@ -1,0 +1,94 @@
+// 본문 코드: 마우스를 누르면 도형들이 랜덤 생성, 낙하. 바닥으로 떨어지면 객체 소멸
+
+let shapes = [];
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < shapes.length; i++) {
+    let sh = shapes[i];
+    sh.display();
+    sh.move();
+    if (sh.position.y > height) {
+      shapes.splice(i, 1);
+    }
+  }
+  // print(shapes.length);
+}
+
+function mousePressed() {
+  let r = random(1);
+  if (r < 1.0/3.0) {
+    let c = new Circle(mouseX, mouseY);
+    shapes.push(c);
+  } else if (r < 2.0/3.0) {
+    let s = new Square(mouseX, mouseY);
+    shapes.push(s);
+  } else {
+    let t = new Triangle(mouseX, mouseY);
+    shapes.push(t);
+  }
+}
+
+// 클래스 코드
+
+class Shape {
+ constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-5, 5), random(-10, -5));
+    this.accel = createVector(0, 0.3);
+    this.col = color(255);
+    this.d = 30;
+  }
+
+  display() {
+    fill(this.col);
+    textSize(this.d);
+    text("Shape", this.position.x, this.position.y);
+  }
+
+  move() {
+    this.velocity.add(this.accel);
+    this.position.add(this.velocity);
+  }
+}
+
+class Circle extends Shape {
+  constructor(x, y) {
+    super(x, y);
+  }
+
+  display() {
+    fill(255, 0, 0);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+}
+
+class Square extends Shape {
+  constructor(x, y) {
+    super(x, y);
+  }
+
+  display() {
+    fill(0, 255, 0);
+    rect(this.position.x, this.position.y, this.d, this.d);
+  }
+}
+
+class Triangle extends Shape {
+  constructor(x, y) {
+    super(x, y);
+  }
+
+  display() {
+    fill(0, 0, 255);
+    triangle(this.position.x, this.position.y, this.position.x-this.d, this.position.y+this.d, this.position.x+this.d, this.position.y+this.d);
+  }
+}

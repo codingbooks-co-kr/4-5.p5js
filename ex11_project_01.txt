@@ -1,0 +1,27 @@
+// 별 문양 그리기
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {
+  fill(255);
+  star(width/2, height/2);
+}
+
+function star(x, y) {
+  let angle = TWO_PI / 5.0;
+
+  beginShape();
+  for (let i = 0.0; i < TWO_PI; i += angle) {
+    let sx = x + 50.0 * cos(i);
+    let sy = y + 50.0 * sin(i);
+    vertex(sx, sy);
+
+    sx = x + 100.0 * cos(i + angle/2);
+    sy = y + 100.0 * sin(i + angle/2);
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
+}

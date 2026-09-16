@@ -1,0 +1,11 @@
+// let을 사용한 변수 선언과 값 변경
+
+function setup() {
+  let num = 255;
+  num = 0;
+  
+  let array = [255, 0, 0];
+  array =  [0, 0, 0];
+  
+  print(num, array);
+}

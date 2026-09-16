@@ -1,0 +1,38 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+
+  // 배열의 길이
+  print(array.length);
+
+  // 배열의 첫 번째 요소와 마지막 요소 출력
+  print(array[0], array[array.length-1]);
+
+  // ❶ for 반복문 (일반적으로 많이 사용)
+  for (let i = 0; i < array.length; i++) {
+    print(i, array[i]);
+  }
+
+  // ❷ “for in” 반복문
+  // 형식: for (let 인덱스 in 배열))
+  for (let i in array) {
+    print(i, array[i]);
+  }
+
+  // ❸ “for of” 반복문
+  // 형식: for (let 변수 of 배열))
+  for (let num of array) {
+    print(num);
+  }
+
+  // ❹ forEach 반복문-1
+  // 형식: 배열.forEach(콜백함수): 콜백함수의 인수=(요소,인덱스,배열)
+  array.forEach(function (value, index, array) {
+    print(index, value);
+  });
+
+  // ❹ forEach 반복문-2
+  // 콜백함수의 인수 중 (인덱스, 배열)은 생략 가능
+  array.forEach(function (value) {
+    print(value);
+  });
+}

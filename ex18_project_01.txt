@@ -1,0 +1,56 @@
+// 본문 코드: 마우스를 따라 움직이는 스프링으로 연결된 10개의 원
+
+let c = [];
+
+function setup() { 
+  createCanvas(500, 500);
+  for (let i = 0; i < 10; i++) {
+    c[i] = new Circle();
+  }
+}   
+
+function draw() { 
+  background(0);
+  for (let i = 0; i < c.length-1; i++) {
+    c[i].display(c[i+1].position.x, c[i+1].position.y);
+    c[i].move(c[i+1].position.x, c[i+1].position.y);
+  }
+  c[c.length-1].display(mouseX, mouseY);
+  c[c.length-1].move(mouseX, mouseY);
+} 
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor() { 
+    this.position = createVector(0, 0);
+    this.velocity = createVector(0, 0);
+    this.accel = createVector(0, 0);
+    this.gravity = createVector(0.0, 2.0);
+    this.mouse = createVector(0, 0);
+    this.force = createVector(0, 0);
+    this.d = 10;
+    this.k = 0.2;
+    this.m = 3.0;
+    this.damping = 0.7;
+    this.col = color(random(255), random(255), random(255));
+  } 
+
+  display(x, y) {
+    stroke(255);
+    line(this.position.x, this.position.y, x, y);
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d*this.m, this.d*this.m);
+  }
+
+  move(x, y) {
+    this.mouse = createVector(x, y);
+    this.force = p5.Vector.sub(this.mouse, this.position);
+    this.force.mult(this.k);
+    this.accel = this.force.div(this.m);
+    this.accel.add(this.gravity);
+    this.velocity.add(this.accel);
+    this.velocity.mult(this.damping);
+    this.position.add(this.velocity);
+  }
+}

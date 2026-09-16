@@ -1,0 +1,31 @@
+// 다양한 데이터형으로 변경 (재할당, 즉 변숫값 변경)
+
+function setup() {
+  let data; 
+  print(data, typeof data);
+
+  data = 10;
+  print(data, typeof data);
+
+  data = "p5.js";
+  print(data, typeof data);
+
+  data = 3 > 2;
+  print(data, typeof data);
+
+  data = null;
+  print(data, typeof data);
+
+  data = [1, 2, 3];
+  print(data, typeof data);
+
+  data = function () { };
+  print(data, typeof data);
+
+  data = {name: "kim"};
+  print(data, typeof data);
+
+  class Circle { }
+  data = new Circle();
+  print(data, typeof data);
+}

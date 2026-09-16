@@ -1,0 +1,22 @@
+let sel, name = "";
+
+function setup() {
+  createCanvas(500, 500);
+  sel = createSelect();
+  sel.option('p5.js');			// 드롭다운 메뉴의 선택 옵션 설정
+  sel.option('javascript');		// 드롭다운 메뉴의 선택 옵션 설정
+  sel.option('processing');		// 드롭다운 메뉴의 선택 옵션 설정
+  sel.style('font-size', '20px');		// 드롭다운 메뉴의 폰트 크기
+  sel.changed(selectMenu);		// 드롭다운 메뉴 변경 시 콜백함수 호출
+  background(0);
+}
+
+function draw() {
+  fill(random(255), random(255), random(255));
+  text(name, random(width), random(height));
+}
+
+function selectMenu() {		// 콜백함수
+  name = sel.value();			// 선택한 옵션 읽기
+  background(0);
+}

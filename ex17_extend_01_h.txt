@@ -1,0 +1,19 @@
+function setup() {
+  let str = "Hello p5.js!";
+
+  // 공통점
+  print(str.substring(6));		// 6번째 문자부터 끝까지
+  print(str.substring(6, str.length));	// 6번째 문자부터 끝까지
+  print(str.substring(0, 5));		// 0번째문자∼(5-1)번째문자
+
+  print(str.slice(6));			// 6번째 문자부터 끝까지
+  print(str.slice(6, str.length));		// 6번째 문자부터 끝까지
+  print(str.slice(0, 5));			// 0번째문자∼(5-1)번째문자
+
+  // 차이점
+  print(str.substring(-6));		// 음수는 0으로 인식(즉, 0∼끝까지)
+  print(str.substring(5, 1));		// 1번째문자∼(5-1)번째문자
+
+  print(str.slice(-6));			// -6은 끝에서 6번째 문자까지
+  print(str.slice(5, 1));			// 인덱스 순서가 바뀐 경우 공백 반환
+}

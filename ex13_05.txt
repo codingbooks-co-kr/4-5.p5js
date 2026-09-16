@@ -1,0 +1,54 @@
+// 본문 코드: 원 좌우 반사 (기본 매개변수)
+
+let c, count = 0;
+
+function setup() {
+  createCanvas(300, 300);
+  c = new Circle();
+}
+
+function draw() {
+  background(0);
+  c.move();
+
+  if (count === 0) {
+    c.display();
+  } else if (count === 1) {
+    let cc = color(0, 255, 0);
+    c.display(cc);
+  } else {
+    let cc = color(0, 0, 255);
+    c.display(cc, 60);
+  }
+}
+
+function mousePressed() {
+  count++;
+  if (count > 2) {
+    count = 0;
+  }
+}
+
+// 클래스 코드
+
+class Circle {
+  constructor() {
+    this.c = color(255, 0, 0);
+    this.x = width / 2;
+    this.y = height / 2;
+    this.d = 30;
+    this.velocity = 1;
+  }
+
+  display(arg1 = this.c, arg2 = this.d) {
+    fill(arg1);
+    ellipse(this.x, this.y, arg2, arg2);
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}

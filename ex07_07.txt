@@ -1,0 +1,17 @@
+// for문과 cos() 및 sin() 함수를 사용하여 랜덤한 위치에 점 100개를 찍어 도넛 모양 만들기
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {
+  for (let i = 0; i < 100; i++) {
+    let theta = random(0, radians(360));
+    let r = random(width/4, width/2);
+    let x = width/2 + r * cos(theta);
+    let y = height/2 + r * sin(theta);
+    stroke(255, 255, 0);
+    point(x, y);
+  }
+}

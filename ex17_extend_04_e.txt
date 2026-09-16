@@ -1,0 +1,18 @@
+// “클래스” 기반 객체 생성 - 원 객체 두 개 좌우 반사
+
+let c1, c2;
+
+function setup() {
+  createCanvas(300, 300);
+  c1 = new Circle(255, 150, 100, 30, 1);	
+  c2 = new Circle(255, 150, 200, 60, -1);
+
+  print(c1.__proto__ === Circle.prototype);		// ①
+  print(Circle.prototype.__proto__ === Object.prototype);	// ②
+  print(c1.constructor === Circle);			// ③
+  print(Circle.__proto__ === Function.prototype);		// ④
+  print(Function.prototype.__proto__ === Object.prototype);	// ⑤
+  print(c1.hasOwnProperty('x'));				// c1은 x 속성을 가지는가?
+}
+
+// 이하 코드 생략

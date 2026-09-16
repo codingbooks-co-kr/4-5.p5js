@@ -1,0 +1,5 @@
+function setup() {
+  let str = "p5.js!";
+  print(str.repeat(1));		// 1번 반복 연결된 문자열 반환
+  print(str.repeat(2));		// 2번 반복 연결된 문자열 반환
+}

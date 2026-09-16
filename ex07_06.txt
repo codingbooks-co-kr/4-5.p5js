@@ -1,0 +1,18 @@
+// 랜덤한 위치에 점 100개를 찍어 원 모양 그리기
+
+function setup() {
+  createCanvas(300, 300);
+  background(0);
+}
+
+function draw() {  
+  for (let i = 0; i < 100; i++) {
+    let x = random(width);
+    let y = random(height);
+    let r = dist(width/2, height/2, x, y);
+    if (r < width/2) {
+      stroke(255, 255, 0);
+      point(x, y);
+    }
+  }
+}

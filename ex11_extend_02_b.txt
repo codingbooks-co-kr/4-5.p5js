@@ -1,0 +1,19 @@
+let r = 100.0;
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  let d = distance(width/2, height/2);
+  print(d);
+}
+
+//  선언함수 (유형4)
+function distance(x, y) {
+  let d = dist(x, y, mouseX, mouseY);
+  fill(d, d, 255);
+  ellipse(x, y, r*2, r*2);
+  return d;
+}

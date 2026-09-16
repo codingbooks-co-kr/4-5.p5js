@@ -1,0 +1,28 @@
+// 영대문자 배열을 랜덤 생성하고 대각선 방향으로 이동
+
+let num = 5;
+let x = [];
+let y = [];
+let c = [];
+
+function setup() {
+  createCanvas(300, 300);
+  for (let i = 0; i < num; i++) {
+    x[i] = random(-100, 100);
+    y[i] = random(-100, 100);
+    let code1 = 'A'.charCodeAt(0);
+    let code2 = 'Z'.charCodeAt(0);
+    c[i] = char(random(code1, code2+1));
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < num; i++) {
+    fill(255);
+    textSize(50);
+    text(c[i], x[i], y[i]);
+    x[i]++;
+    y[i]++;
+  }
+}

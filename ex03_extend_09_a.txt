@@ -1,0 +1,47 @@
+// 변수 선언 시 다양한 데이터값과 데이터형 출력
+
+function setup() {
+  // 기본형 - 숫자(number)
+  let data1 = 10;
+  print(data1, typeof data1);
+  let data2 = 10.5;
+  print(data2, typeof data2);
+  let data3 = 5/0;
+  print(data3, typeof data3);
+  let data4 = -5/0;
+  print(data4, typeof data4);
+  let data5 = 'p5.js'/2;
+  print(data5, typeof data5);
+  
+  // 기본형 - 문자열(string)
+  let data6 = 'p';
+  print(data6, typeof data6);
+  let data7 = 'p5.js';
+  print(data7, typeof data7);
+  
+  // 기본형 - 논리(boolean)
+  let data8 = 3 > 2;
+  print(data8, typeof data8);
+  let data9 = 3 < 2;
+  print(data9, typeof data9);
+  
+  // 기본형 - 특수(null, undefined)
+  let data10 = null;
+  print(data10, typeof data10);
+  let data11;
+  print(data11, typeof data11);
+
+  // 객체형 – 배열, 함수, 객체리터럴, 클래스
+  let data12 = [1,2,3];
+  print(data12, typeof data12);
+
+  let data13 = function () { };
+  print(data13, typeof data13);
+
+  let data14 = {name: "kim"};
+  print(data14, typeof data14);
+
+  class Circle {}
+  let data15 = new Circle();
+  print(data15, typeof data15);
+}

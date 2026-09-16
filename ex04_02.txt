@@ -1,0 +1,18 @@
+// 원의 가속 이동
+
+let x = 0, y = 0;
+let velocity_x = 0, velocity_y = 0;
+let accel_x = 0.2, accel_y = 0.2;
+
+function setup() {
+  createCanvas(400, 400);
+  background(0);
+}
+
+function draw() {
+  ellipse(x, y, 30, 30);
+  velocity_x += accel_x;
+  velocity_y += accel_y;  
+  x += velocity_x;
+  y += velocity_y;
+}

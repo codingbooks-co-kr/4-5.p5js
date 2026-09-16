@@ -1,0 +1,23 @@
+// 콜백함수 미사용
+
+let inp, slider;
+
+function setup() {
+  noCanvas();
+  createP('Your Name');	
+  inp = createInput('Kim');
+  
+  createP('Your Age');
+  // 슬라이더 범위(0∼100), 초깃값(24)
+  slider = createSlider(0, 100, 24);
+}
+
+function draw() {
+  // 입력창의 값 읽기
+  let name = inp.value();
+
+  // 슬라이더 값 읽기
+  let age = slider.value();
+
+  print(name, age);
+}

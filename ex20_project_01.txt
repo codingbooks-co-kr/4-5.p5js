@@ -1,0 +1,69 @@
+// 본문 코드: 자연 이미지를 배경으로 마우스를 누르면 나비가 하나씩 생성되어 랜덤 이동1
+
+let img, bg_img;
+let butterflies = [];
+
+function preload() {
+  img = loadImage("butterfly.png");
+  bg_img = loadImage("nature3.jpg");
+}
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(bg_img);
+  for (let i = 0; i < butterflies.length; i++) {
+    let b = butterflies[i];
+    b.display();
+    b.move();
+    b.bounce();
+  }
+  if (butterflies.length > 5) {
+    butterflies.splice(0, 1);
+  }
+}
+
+function mousePressed() {
+  let b = new Butterfly(mouseX, mouseY)
+  butterflies.push(b);
+}
+
+// Butterfly 클래스 코드
+
+class Butterfly {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-2, 2), random(-2, 2));
+    this.d = 50;
+  }
+
+  display() {
+    image(img, this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.position.add(this.velocity);
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+}

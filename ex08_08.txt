@@ -1,0 +1,21 @@
+// 출력 화면을 가득 채운 원들 중 마우스 현재 위치의 원을 사각형으로 바꾸기
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  for (let y = 0; y <= height; y +=30) {
+    for (let x = 0; x <= width; x += 30) {
+      if (mouseX > x-15 && mouseX < x+15 && mouseY > y-15 && mouseY < y+15) {
+        fill(255, 0, 0);
+        rectMode(CENTER);
+        rect(x, y, 30, 30);
+      } else {
+        fill(255, 255, 0); 
+        ellipse(x, y, 30, 30);
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+// 벡터의 연산 코드 예
+
+function setup() { 
+  let mouse = createVector(50, 30);
+  let position = createVector(20, 50);
+  let accel = createVector(0, 0);
+
+  let force = p5.Vector.add(mouse, position);	// 벡터 덧셈
+  print(force.x, force.y);        			// 출력: 70 80
+
+  force = p5.Vector.sub(mouse, position);		// 벡터 뺄셈
+  print(force.x, force.y);        			// 출력: 30 -20
+
+  force.mult(0.1);				// 벡터 곱셈
+  print(force.x, force.y);			// 출력: 3 -2
+
+  force.div(2.0);				// 벡터 나눗셈
+  print(force.x, force.y);			// 출력: 1.5 -1
+
+  accel = force;
+  print(accel.x, accel.y);			// 출력: 1.5 –1
+}

@@ -1,0 +1,70 @@
+function setup() {
+  noCanvas();				// 캔버스 제거
+  createElement("h2", "Input Tag Type");	// 제목 텍스트 출력
+
+  createDiv('Text');				// 영역 텍스트 출력
+  let txt = createInput("", "text");		// 한 줄의 텍스트 입력 박스 생성
+  
+  createDiv('Button');
+  let button = createInput("", "button");		// 기본 버튼 생성
+  button.size(50, 20); 				// 버튼 크기 설정
+  
+  createDiv('Number');		
+  let num = createInput("", "number");		// 숫자 조절 스핀박스 입력창 생성
+  
+  createDiv('Range');	
+  let ran = createInput("", "range");		// 숫자 조절 슬라이더창 생성
+  
+  createDiv('Checkbox');
+  let check = createInput("", "checkbox");	// 선택 항목 중 여러 항목 선택 가능 
+  
+  createDiv('radio');
+  let rad = createInput("", "radio");		// 선택 항목 중 한 가지만 선택 가능 
+  
+  createDiv('file');
+  let f = createInput("", "file");			// 파일 선택창을 여는 버튼 생성
+  
+  createDiv('Password');
+  let pw = createInput("", "password");		// 비밀번호 입력(입력 문자: *표시) 
+  
+  createDiv('tel');
+  let te = createInput("", "tel");			// 전화번호 입력창 생성
+  
+  createDiv('email');
+  let em = createInput("", "email");		// 이메일 주소 입력창 생성
+  
+  createDiv('Date');
+  let d = createInput("", "date");			// 사용자지역 기준 날짜 입력창 생성
+  
+  createDiv('month');
+  let m = createInput("", "month");		// 사용자지역 기준 날짜 입력창 생성
+  
+  createDiv('week');
+  let w = createInput("", "week");		// 사용자지역 기준 날짜 입력창 생성
+  
+  createDiv('Time');
+  let t = createInput("", "time");			// 사용자지역 기준 시간 입력창 생성
+  
+  createDiv('datetime-local');
+  let dl = createInput("", "datetime-local");		// 사용자지역 기준 날짜/시간 입력창
+  
+  createDiv('datetime');
+  let dt = createInput("", "datetime");		// 국제표준시 입력창 생성
+  
+  createDiv('search');
+  let s = createInput("", "search");		// 검색창 생성
+  
+  createDiv('url');
+  let u = createInput("", "url");			// URL 인터넷 주소 입력창 생성
+
+  createDiv('submit');
+  let sub = createInput("", "submit");		// 전송 버튼 생성
+  sub.size(50, 20); 				// 전송 버튼 크기 설정
+
+  createDiv('hidden');
+  let hid = createInput("Secret", "hidden");	// 숨김창 생성
+  
+  createDiv('reset');
+  let res = createInput("", "reset");		// 리셋 버튼 생성
+  res.size(50, 20); 				// 리셋 버튼 크기 설정
+}

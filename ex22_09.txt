@@ -1,0 +1,24 @@
+// 텍스트 입력창에 각도를 입력하고 해당하는 각도의 원호 그리기
+
+let inp, degree = 90;
+
+function setup() {
+  createCanvas(500, 500);
+  inp = createInput('');
+  inp.position(10, 40);
+  inp.size(130);
+  inp.input(myInput);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  textSize(20);
+  text("Enter a degree!", 10, 30);
+
+  arc(width/2, height/2, 200, 200, 0, radians(degree));
+}
+
+function myInput() {
+  degree = inp.value();
+}

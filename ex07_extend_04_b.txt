@@ -1,0 +1,14 @@
+// [질문7.2] 평행선 그리기
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  // ❷ 세미콜론 오류!
+  for (let y = 50; y < height; y += 50); {
+    stroke(255);
+    line(0, y, width, y);
+  }
+}

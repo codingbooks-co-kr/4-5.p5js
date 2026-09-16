@@ -1,0 +1,19 @@
+// 원의 외곽선 굵기와 크기를 점점 크게 만들기
+
+function setup() {
+  createCanvas(300, 300);
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i <= 300; i += 50) {
+    display(i);
+  }
+}
+
+function display(d) {
+  strokeWeight(d/30);
+  stroke(255, 255, 0);
+  noFill();
+  ellipse(width/2, height/2, d, d);
+}

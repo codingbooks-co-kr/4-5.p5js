@@ -1,0 +1,15 @@
+// 원의 등속 이동 (p5.Vector 클래스 미사용)
+
+let x = 0, y = 0;
+let velocity_x = 1, velocity_y = 1;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  ellipse(x, y, 30, 30);
+  x += velocity_x;
+  y += velocity_y;
+}

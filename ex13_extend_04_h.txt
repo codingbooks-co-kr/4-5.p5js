@@ -1,0 +1,8 @@
+function setup() {
+  display(100);
+  display("p5.js");
+}
+
+function display(arg) {
+  print(arg, typeof arg);
+}

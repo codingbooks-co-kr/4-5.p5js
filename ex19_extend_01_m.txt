@@ -1,0 +1,9 @@
+function setup() {
+  let array = [10, 20, 30, 40];
+
+  let result = array.includes(100);
+  print(result);				// 100이 없으므로 false
+
+  result = array.includes(30);
+  print(result);				// 30이 있으므로 true
+}

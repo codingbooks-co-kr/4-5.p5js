@@ -1,0 +1,21 @@
+// 스페이스키를 누를 때마다 랜덤한 색상과 위치를 가진 원이 생성 또는 정지
+
+let check = false;
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+}
+
+function draw() {
+  if (check) {
+    fill(random(255), random(255), random(255), 200);
+    ellipse(random(width), random(height), 30, 30);
+  }
+}
+
+function keyPressed() {
+  if (key === ' ') {
+    check = !check;
+  }
+}

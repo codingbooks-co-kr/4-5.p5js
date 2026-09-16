@@ -1,0 +1,30 @@
+// 마우스를 누르면 원 객체가 하나씩 생성, 생성된 객체가 다섯 개를 넘으면 0번 객체 소멸
+
+let positions = [];
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+
+  fill(255);
+  textSize(30);
+  text("Circles: " + positions.length, 50, 50);
+
+  for (let i = 0; i < positions.length; i++) {
+    let p = positions[i];
+    ellipse(p.x, p.y, 30, 30);
+  }
+
+  if (positions.length > 5) {
+    positions.splice(0, 1);
+  }
+}
+
+// 마우스를 누르면 원 객체가 하나씩 생성되고 positions 배열에 추가
+function mousePressed() {
+  let p = createVector(mouseX, mouseY);
+  positions.push(p);
+}

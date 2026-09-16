@@ -1,0 +1,6 @@
+function setup() {
+  let str = "Hello p5.js!";
+  print(str.substr(6));			// 6번째 문자부터 끝까지
+  print(str.substr(6, str.length));		// 6번째 문자부터 끝까지
+  print(str.substr(6, 5));		// 6번째 문자부터 5문자 추출
+}

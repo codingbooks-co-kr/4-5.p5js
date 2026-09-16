@@ -1,0 +1,28 @@
+// 슬라이더 조작으로 이미지 객체 회전
+
+let img, slider;
+let theta = 0;
+
+function preload() {
+  img = loadImage("flower.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+  background(0);
+  fill(255);
+  textSize(20);
+  text("Move image with slider!", 10, 30);
+  
+  slider = createSlider(0, TWO_PI, PI, 0);
+  slider.position(10, 40);
+  slider.size(200);
+}
+
+function draw() {
+  theta = slider.value();
+  let x = width/2 + 100 * cos(theta);
+  let y = height/2 + 100 * sin(theta);
+  imageMode(CENTER);
+  image(img, x, y);
+}

@@ -1,0 +1,51 @@
+// 본문 코드: 마우스를 움직일 때마다 원 객체가 하나씩 생성되어 낙하, 바닥에 닿으면 소멸
+
+let circles = [];
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  for (let i = 0; i < circles.length; i++) {
+    let c = circles[i];
+    c.display();
+    c.move();
+    if (c.position.y > height) {
+      circles.splice(i, 1);
+    }
+  }
+  // print(circles.length);
+}
+
+function mouseMoved() {
+  let c = new Circle(mouseX, mouseY);
+  circles.push(c);
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-5, 5), random(-10, -5));
+    this.accel = createVector(0, 0.3);
+    this.col = color(random(255), random(255), random(255));
+    this.d = 30;
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.velocity.add(this.accel);
+    this.position.add(this.velocity);
+  }
+}

@@ -1,0 +1,106 @@
+// 본문 코드: 마우스를 누르면 원이 생성되어 랜덤 이동, 5개를 초과하면 0번 객체 소멸, 원이 사각형에 들어가면 속도 감소
+
+let circles = [];
+let r;
+
+function setup() {
+  createCanvas(500, 500); 
+  r = new Rectangle(100, 200, 300, 100);
+}
+
+function draw() {
+  // 페이딩 효과
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  fill(255);
+  r.display();
+
+  for (let i = 0; i < circles.length; i++) {
+    let c = circles[i];
+    c.display();
+    c.move();
+    c.bounce();
+    if (r.contains(c.position.x, c.position.y)) {
+      c.addFriction();
+    }
+  }
+  if (circles.length > 5) {
+    circles.splice(0, 1);
+  }
+  print(circles.length);
+}
+
+function mousePressed() {
+  let c = new Circle(mouseX, mouseY);
+  circles.push(c);
+}
+
+// Circle 클래스 코드
+
+class Circle {
+  constructor(x, y) {
+    this.position = createVector(x, y);
+    this.velocity = createVector(random(-5, 5), random(-5, 5));
+    this.col = color(255, 0, 0);
+    this.d = 30;
+    this.friction = 0.95;
+  }
+
+  display() {
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.d, this.d);
+  }
+
+  move() {
+    this.position.add(this.velocity);
+  }
+
+  addFriction() {
+    this.velocity.mult(this.friction);
+  }
+
+  bounce() {
+    // 경계에 부딪힐 때 반사 적용
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    }
+    if (this.position.x > width) {
+      this.position.x = width;
+      this.velocity.x *= -1;
+    }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    }
+    if (this.position.y > height) {
+      this.position.y = height;
+      this.velocity.y *= -1;
+    }
+  }
+}
+
+// Rectangle 클래스 코드
+
+class Rectangle {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+  }
+
+  display() {
+    rect(this.x, this.y, this.width, this.height);
+  }
+
+  contains(x, y) {
+    if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

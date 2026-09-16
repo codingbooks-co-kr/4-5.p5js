@@ -1,0 +1,10 @@
+function setup() {
+  let array1 = [10, 20];
+  let array2 = [30, 40];
+
+  let result = array1.concat(array2);	// 배열 추가
+  print(result);
+
+  result = array1.concat(100);		// 값 추가
+  print(result);
+}

@@ -1,0 +1,42 @@
+// 마우스를 누르면 누른 지점부터 사운드가 재생
+
+let audio, peaks;
+
+function preload(){
+  audio = loadSound('hometown.mp3');
+}
+
+function setup() {
+  createCanvas(400, 200);
+  background(0);
+  audio.loop();
+  peaks = audio.getPeaks();
+}
+
+function draw() {
+  background(0);
+  stroke(255);
+  noFill();
+
+  // 파형 그리기
+  beginShape();
+  for (i = 0; i< peaks.length; i++){
+    let x = map(i, 0, peaks.length, 0, width);
+    let y = map(peaks[i], -1, 1, height, 0);
+    vertex(x, y);
+  }
+  endShape();
+  
+  // 사운드 진행 x축 위치 좌표(→pos) 알아내기
+  let pos = map(audio.currentTime(), 0, audio.duration(), 0, width);
+
+  // 사운드 진행 선 그리기
+  stroke(0, 255, 0);
+  line(pos, 0, pos, height);
+}
+
+// 마우스를 누른 위치로 재생 헤드 이동
+function mousePressed() {
+  let posTime = map(mouseX, 0, width, 0, audio.duration());
+  audio.jump(posTime);	
+}

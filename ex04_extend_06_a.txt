@@ -1,0 +1,11 @@
+// dist() 함수를 사용한 원의 크기 변경
+
+function setup() { 
+  createCanvas(300, 300); 
+} 
+ 
+function draw() { 
+  background(0); 
+  let d = dist(width/2, height/2, mouseX, mouseY);
+  ellipse(width/2, height/2, d*2, d*2);
+}

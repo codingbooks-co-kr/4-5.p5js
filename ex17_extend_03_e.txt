@@ -1,0 +1,17 @@
+// “생성자 함수” 기반 객체 생성
+
+function setup() {
+  // new 연산자로 객체 생성
+  let c = new Circle();
+
+  print(c.c, c.x, c.y, c.d, c.velocity);
+  print(typeof c);
+}
+
+function Circle() {	// 생성자 함수
+  this.c = 255;
+  this.x = width / 2;
+  this.y = height / 2;
+  this.d = 30;
+  this.velocity = 1;
+}

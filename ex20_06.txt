@@ -1,0 +1,22 @@
+// 이미지가 점점 커지는 것을 반복
+
+let img;
+let r = 10;
+
+function preload() {
+  img = loadImage("flower.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+}
+
+function draw() {
+  background(0);
+  imageMode(CENTER);
+  image(img, width/2, height/2, r, r);
+  r++;
+  if (r > width) {
+    r = 10;
+  }
+}

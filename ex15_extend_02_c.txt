@@ -1,0 +1,77 @@
+// 본문 코드: 원 좌우 반사, 사각형 상하 반사
+
+let c, s;
+
+function setup() {
+  createCanvas(300, 300);
+  c = new Circle(255, width/2, 100, 30, -2);
+  s = new Square(255, width/2, 200, 30, 2);
+}
+
+function draw() {
+  // 페이딩 효과 구현
+  noStroke();
+  fill(0, 10);
+  rect(0, 0, width, height);
+
+  c.display();
+  c.move();
+  s.display();
+  s.move();
+}
+
+// 클래스 코드
+
+class Shape {
+  constructor(c, x, y, d, velocity) {
+    this.c = c;
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.velocity = velocity;
+  }
+
+  move() {
+    this.x += this.velocity;
+    if (this.x < 0 || this.x > width) {
+      this.velocity *= -1;
+    }
+  }
+}
+
+class Circle extends Shape {
+  constructor(c, x, y, d, velocity) {
+    super(c, x, y, d, velocity);
+  }
+
+  display() {
+    fill(this.c, 0, 0);
+    ellipse(this.x, this.y, this.d, this.d);
+  }
+}
+
+// 메소드오버라이딩 + 상위 메소드 호출(수정본)
+
+class Square extends Shape {
+  constructor(c, x, y, d, velocity) {
+    super(c, x, y, d, velocity);
+    this.velocity_y = 3;
+  }
+
+  display() {
+    fill(0, this.c, 0);
+    rect(this.x, this.y, this.d, this.d);
+  }
+
+  move() {
+    super.move();
+    this.move_y();
+  }
+
+  move_y() {
+    this.y += this.velocity_y;
+    if (this.y < 0 || this.y > height) {
+      this.velocity_y *= -1;
+    }
+  }
+}
